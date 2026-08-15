@@ -1,0 +1,4 @@
+interface:
+  display_name: "Thinking Toolkit"
+  short_description: "Choose and apply practical thinking models"
+  default_prompt: "Use $thinking-toolkit to choose and apply the best thinking model to this situation."
