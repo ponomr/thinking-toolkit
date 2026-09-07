@@ -1,0 +1,27 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Validate skill
+        run: python3 scripts/validate_skill.py .
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify reproducible release archive
+        run: |
+          python3 scripts/build_release.py --output-dir /tmp/release-a
+          python3 scripts/build_release.py --skip-checks --output-dir /tmp/release-b
+          cmp /tmp/release-a/thinking-toolkit-v*.tar.gz /tmp/release-b/thinking-toolkit-v*.tar.gz
+          cmp /tmp/release-a/SHA256SUMS /tmp/release-b/SHA256SUMS

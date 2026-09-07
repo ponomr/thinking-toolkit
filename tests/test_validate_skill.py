@@ -29,6 +29,21 @@ class ValidatorTests(unittest.TestCase):
     def test_current_project_is_valid(self) -> None:
         self.assertEqual(VALIDATOR.validate_project(PROJECT_ROOT), [])
 
+    def test_invalid_version_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = self.copy_project(Path(temporary))
+            (copied / "VERSION").write_text("latest\n", encoding="utf-8")
+            errors = VALIDATOR.validate_project(copied)
+            self.assertTrue(any("VERSION must use semantic" in error for error in errors))
+
+    def test_symlink_install_option_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = self.copy_project(Path(temporary))
+            installer = copied / "install.sh"
+            installer.write_text(installer.read_text() + "\n# --symlink\n", encoding="utf-8")
+            errors = VALIDATOR.validate_project(copied)
+            self.assertTrue(any("must not offer symlink" in error for error in errors))
+
     def test_missing_model_is_reported(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))

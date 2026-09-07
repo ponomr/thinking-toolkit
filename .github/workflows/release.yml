@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Match tag to VERSION
+        run: test "${GITHUB_REF_NAME}" = "v$(cat VERSION)"
+      - name: Build verified payload
+        run: python3 scripts/build_release.py --output-dir dist
+      - name: Publish immutable release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            dist/thinking-toolkit-"${GITHUB_REF_NAME}".tar.gz \
+            dist/SHA256SUMS \
+            --repo "${GITHUB_REPOSITORY}" \
+            --verify-tag \
+            --title "Thinking Toolkit ${GITHUB_REF_NAME}" \
+            --notes "Versioned skill payload. Verify the release and asset before installation."

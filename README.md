@@ -148,24 +148,45 @@ verdict format), [fallacy taxonomy](logic/fallacies.md),
 
 The skill follows the [Agent Skills](https://simonwillison.net/2025/Dec/12/openai-skills/)
 convention (`SKILL.md` + resource files), supported by Claude Code, OpenAI
-Codex CLI, OpenClaw, and other SKILL.md runtimes. Installation is copying a
-folder.
+Codex CLI, OpenClaw, and other SKILL.md runtimes. Stable installation uses a
+copied payload from a fixed, immutable release.
 
-### Quick install
+### Recommended: verified release
 
 ```bash
-git clone --depth 1 https://github.com/ponomr/thinking-toolkit.git && thinking-toolkit/install.sh
+gh release download v1.0.0 --repo ponomr/thinking-toolkit \
+  --pattern 'thinking-toolkit-v1.0.0.tar.gz' --pattern SHA256SUMS
+gh release verify v1.0.0 --repo ponomr/thinking-toolkit
+gh release verify-asset v1.0.0 thinking-toolkit-v1.0.0.tar.gz \
+  --repo ponomr/thinking-toolkit
+tar -xzf thinking-toolkit-v1.0.0.tar.gz
+./thinking-toolkit/install.sh
 ```
 
-That installs into every agent detected on the machine, printing each path and
-refusing to overwrite an existing install unless you confirm.
+This requires [GitHub CLI](https://cli.github.com/). It verifies that the
+downloaded bytes belong to the published release before running the installer.
+The installer copies the payload into every detected agent, prints each path,
+and preserves any replaced installation as a sibling backup.
 
 Options:
 
 - Pick a host: `./install.sh claude`, `codex`, `openclaw`, or a custom path.
-- `--symlink` links the skill instead of copying it, so a later `git pull` in
-  this repo updates every install at once.
-- `--force` overwrites an existing install without asking.
+- `--force` replaces an existing install without asking; it still keeps a backup.
+
+### Updating
+
+Updates never run inside an agent session. Start them explicitly from an
+installed copy:
+
+```bash
+python3 ~/.claude/skills/thinking-toolkit/update.py --dry-run
+python3 ~/.claude/skills/thinking-toolkit/update.py
+```
+
+The updater verifies the immutable release and its archive, displays every
+added, removed, and changed file, and asks before replacing anything. It prints
+the path to the preserved backup and the exact rollback command. Use the
+corresponding Codex or OpenClaw path if that is the copy you want to update.
 
 ### Manual install
 
@@ -176,14 +197,30 @@ Options:
 | OpenClaw | `~/.openclaw/skills/thinking-toolkit/` | `.openclaw/skills/thinking-toolkit/` |
 | Anything else | Wherever your runtime discovers `SKILL.md` | — |
 
-Copy `SKILL.md`, `references/`, `logic/`, and (optionally) `agents/` into the
-directory. The `scripts/` and `tests/` directories are repository tooling, not
-skill payload — leave them out. Nothing else is required at runtime — no API
-keys, no network access, no code execution.
+From the unpacked release, copy the `thinking-toolkit/` directory to the chosen
+skills directory. The repository's `scripts/` and `tests/` directories are
+development tooling and are deliberately absent from the release archive.
+Using the skill requires no API keys, network access, or code execution;
+network access is used only when you explicitly install or update it.
 
 For self-hosted gateways and custom harnesses: inject `SKILL.md` into the
 system context and make `references/` readable; the skill assumes nothing
 beyond file reading.
+
+### Development checkout
+
+Contributors can clone `main` and run `./install.sh`, but `main` is a development
+line rather than an audited release. Stable users should install a versioned
+release. Symlink installation is intentionally unsupported because it would
+couple every agent to changes in a mutable working tree.
+
+## Security model
+
+Thinking Toolkit is instruction code. Treat a change to its Markdown as you
+would treat a software update. Published releases are immutable, CI validates
+the skill and reproducibility of its archive, and updates always require a
+user action and confirmation. See [SECURITY.md](SECURITY.md) for the trust
+boundary, verification commands, and vulnerability reporting.
 
 ## Usage
 
@@ -210,13 +247,16 @@ and returns the artifact with its assumptions and a review trigger.
 ```
 thinking-toolkit/
 ├── SKILL.md                  # entry point: contract, routing, workflow
+├── VERSION                   # installed and release version
 ├── references/
 │   ├── catalog.md            # index, aliases, selection cues, recipes
 │   └── <model>.md            # 30 operational cards, one per model
+├── logic/                    # /logic procedure and focused references
 ├── agents/openai.yaml        # optional host discovery metadata
-├── scripts/validate_skill.py # deterministic structure validation
-├── tests/                    # validator regression tests
-└── install.sh                # copy payload into agent skill dirs
+├── scripts/                  # validation and deterministic release build
+├── tests/                    # regression and supply-chain tests
+├── install.sh                # copy payload into agent skill dirs
+└── update.py                 # verified updates and rollback
 ```
 
 ### Development
@@ -224,6 +264,7 @@ thinking-toolkit/
 ```bash
 python3 scripts/validate_skill.py .        # structure + content invariants
 python3 -m unittest discover -s tests -v   # validator regression tests
+python3 scripts/build_release.py           # reproducible payload + SHA256SUMS
 ```
 
 The validator enforces the invariants that make the skill reliable: every card

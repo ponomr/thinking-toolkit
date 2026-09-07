@@ -128,21 +128,41 @@ investigation*（Pareto → Iceberg → Ishikawa → Five Whys → OODA）——
 
 技能遵循 [Agent Skills](https://simonwillison.net/2025/Dec/12/openai-skills/)
 约定（`SKILL.md` + 资源文件），Claude Code、OpenAI Codex CLI、OpenClaw 及
-其他 SKILL.md 运行时均已支持。安装就是复制一个文件夹。
+其他 SKILL.md 运行时均已支持。稳定安装会从固定且不可变的发布版本复制载荷。
 
-### 快速安装
+### 推荐方式：验证发布版本
 
 ```bash
-git clone --depth 1 https://github.com/ponomr/thinking-toolkit.git && thinking-toolkit/install.sh
+gh release download v1.0.0 --repo ponomr/thinking-toolkit \
+  --pattern 'thinking-toolkit-v1.0.0.tar.gz' --pattern SHA256SUMS
+gh release verify v1.0.0 --repo ponomr/thinking-toolkit
+gh release verify-asset v1.0.0 thinking-toolkit-v1.0.0.tar.gz \
+  --repo ponomr/thinking-toolkit
+tar -xzf thinking-toolkit-v1.0.0.tar.gz
+./thinking-toolkit/install.sh
 ```
 
-安装到机器上检测到的所有智能体，打印每个路径，未经确认不会覆盖已有安装。
+需要 [GitHub CLI](https://cli.github.com/)。它会在运行安装程序前验证下载内容
+确实属于已发布版本。安装程序把载荷复制到检测到的智能体目录，打印每个路径，
+并把被替换的安装保留为相邻备份。
 
 选项：
 
 - 指定宿主：`./install.sh claude`、`codex`、`openclaw` 或自定义路径。
-- `--symlink` 用链接代替复制，之后在本仓库 `git pull` 即可一次更新全部安装。
-- `--force` 不询问直接覆盖已有安装。
+- `--force` 不询问直接替换已有安装，但仍会保留备份。
+
+### 更新
+
+更新不会在智能体会话中自动运行，必须从已安装副本中显式启动：
+
+```bash
+python3 ~/.claude/skills/thinking-toolkit/update.py --dry-run
+python3 ~/.claude/skills/thinking-toolkit/update.py
+```
+
+更新程序会验证不可变发布版本及其归档，列出新增、删除和修改的文件，并在替换
+前请求确认。完成后会打印备份路径和准确的回滚命令。若更新 Codex 或 OpenClaw
+副本，请使用相应的安装路径。
 
 ### 手动安装
 
@@ -153,12 +173,24 @@ git clone --depth 1 https://github.com/ponomr/thinking-toolkit.git && thinking-t
 | OpenClaw | `~/.openclaw/skills/thinking-toolkit/` | `.openclaw/skills/thinking-toolkit/` |
 | 其他任意环境 | 你的运行时发现 `SKILL.md` 的位置 | — |
 
-把 `SKILL.md`、`references/`、`logic/` 和（可选的）`agents/` 复制进目录即可。
-`scripts/` 和 `tests/` 是仓库工具，不是技能载荷，无需复制。运行时不需要任何
-其他东西——无 API 密钥、无网络访问、无代码执行。
+从解压后的发布版本中，把 `thinking-toolkit/` 目录复制到所选技能目录。仓库中的
+`scripts/` 和 `tests/` 是开发工具，不会进入发布归档。使用技能无需 API 密钥、
+网络或代码执行；只有在用户显式安装或更新时才会访问网络。
 
 对于自托管网关和自定义环境：把 `SKILL.md` 注入系统上下文并使 `references/`
 可读；技能除了读文件之外不做任何假设。
+
+### 开发检出
+
+贡献者可以克隆 `main` 并运行 `./install.sh`，但 `main` 是开发线，而不是经过审计
+的发布版本。稳定用户应安装带版本号的发布版本。项目有意不支持符号链接安装，
+因为它会让所有智能体绑定到可变工作目录的变化。
+
+## 安全模型
+
+Thinking Toolkit 是智能体会执行的指令代码，应像软件更新一样对待 Markdown 的
+变化。已发布版本不可变，CI 会验证技能和归档的可复现性，更新始终需要用户显式
+启动并确认。信任边界、验证命令和漏洞报告方式见 [SECURITY.md](SECURITY.md)。
 
 ## 使用
 
@@ -185,13 +217,16 @@ git clone --depth 1 https://github.com/ponomr/thinking-toolkit.git && thinking-t
 ```
 thinking-toolkit/
 ├── SKILL.md                  # 入口：契约、路由、工作流
+├── VERSION                   # 安装与发布版本
 ├── references/
 │   ├── catalog.md            # 索引、别名、选择信号、组合配方
 │   └── <model>.md            # 30 张操作卡片，每模型一张
+├── logic/                    # /logic 流程及专项参考
 ├── agents/openai.yaml        # 可选的宿主发现元数据
-├── scripts/validate_skill.py # 确定性的结构验证
-├── tests/                    # 验证器回归测试
-└── install.sh                # 将 payload 复制到技能目录
+├── scripts/                  # 验证与可复现发布构建
+├── tests/                    # 回归与供应链测试
+├── install.sh                # 将载荷复制到技能目录
+└── update.py                 # 经验证的显式更新与回滚
 ```
 
 ### 开发
@@ -199,6 +234,7 @@ thinking-toolkit/
 ```bash
 python3 scripts/validate_skill.py .        # 结构与内容不变量
 python3 -m unittest discover -s tests -v   # 验证器回归测试
+python3 scripts/build_release.py           # 可复现载荷归档 + SHA256SUMS
 ```
 
 验证器守护着让技能可靠的不变量：每张卡片包含全部十个操作章节，每个链接都

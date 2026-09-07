@@ -229,7 +229,7 @@ REPO_DOC_FILES = {
     "README.md",
     "README.ru.md",
     "README.zh.md",
-    "CHANGELOG.md",
+    "SECURITY.md",
     "LICENSE",
 }
 # Localized READMEs are intentionally non-English; the main README carries
@@ -323,6 +323,31 @@ def validate_logic_module(root: Path) -> list[str]:
     return errors
 
 
+def validate_distribution(root: Path) -> list[str]:
+    """Validate versioning and the copy-only installation boundary."""
+    errors: list[str] = []
+    version = (root / "VERSION").read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
+        errors.append("VERSION must use semantic x.y.z format")
+
+    installer = (root / "install.sh").read_text(encoding="utf-8")
+    if "--symlink" in installer:
+        errors.append("install.sh must not offer symlink installation")
+    for item in ("SKILL.md", "references", "logic", "agents", "LICENSE", "VERSION", "update.py"):
+        if item not in installer:
+            errors.append(f"install.sh payload does not mention: {item}")
+
+    updater = (root / "update.py").read_text(encoding="utf-8")
+    verification_calls = {
+        'run_gh("release", "verify",': "gh release verify",
+        'run_gh("release", "verify-asset",': "gh release verify-asset",
+    }
+    for code, command in verification_calls.items():
+        if code not in updater:
+            errors.append(f"update.py is missing verification command: {command}")
+    return errors
+
+
 def validate_project(root: Path, forbidden_terms: list[str] | None = None) -> list[str]:
     """Return all validation errors for a project root."""
     forbidden_terms = forbidden_terms or []
@@ -332,6 +357,12 @@ def validate_project(root: Path, forbidden_terms: list[str] | None = None) -> li
         root / "agents" / "openai.yaml",
         root / "references" / "catalog.md",
         root / "logic" / "overview.md",
+        root / "VERSION",
+        root / "install.sh",
+        root / "update.py",
+        root / "SECURITY.md",
+        root / ".github" / "workflows" / "validate.yml",
+        root / ".github" / "workflows" / "release.yml",
     ]
     errors = [
         f"missing required file: {path.relative_to(root)}"
@@ -344,6 +375,7 @@ def validate_project(root: Path, forbidden_terms: list[str] | None = None) -> li
     errors.extend(validate_agent_metadata(root / "agents" / "openai.yaml"))
     errors.extend(validate_model_cards(root))
     errors.extend(validate_logic_module(root))
+    errors.extend(validate_distribution(root))
     errors.extend(validate_links(root))
     errors.extend(validate_project_text(root, forbidden_terms))
     return errors

@@ -1,26 +1,24 @@
 #!/usr/bin/env bash
 # Install the thinking-toolkit skill into a host agent's skills directory.
 #
-# Usage: ./install.sh [--symlink] [--force] [claude|codex|openclaw|all|<path>]
+# Usage: ./install.sh [--force] [claude|codex|openclaw|all|<path>]
 #
-#   --symlink   Link the skill instead of copying it, so `git pull` in this
-#               repo updates every install at once.
-#   --force     Overwrite an existing install without asking.
+#   --force     Replace an existing install without asking. The prior version
+#               is preserved as a sibling backup.
 #   target      Which agent to install for (default: all detected agents).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Only the skill payload is installed; repo docs, tests, and tooling stay out.
-PAYLOAD=(SKILL.md references logic agents)
+# Only the skill payload and its explicit updater are installed. Repository
+# docs, tests, validation tooling, and release tooling stay out.
+PAYLOAD=(SKILL.md references logic agents LICENSE VERSION update.py)
 
-MODE="copy"
 FORCE="no"
 TARGET=""
 
 for arg in "$@"; do
   case "$arg" in
-    --symlink) MODE="symlink" ;;
     --force)   FORCE="yes" ;;
     --help|-h) grep '^#' "$0" | sed 's/^# \{0,1\}//' | head -8; exit 0 ;;
     -*)        echo "unknown option: $arg" >&2; exit 2 ;;
@@ -31,14 +29,31 @@ TARGET="${TARGET:-all}"
 
 install_to() {
   local dest="$1/thinking-toolkit"
+  local backup=""
+  local suffix=""
 
   if [ -e "$dest" ] || [ -L "$dest" ]; then
     if [ "$FORCE" = "yes" ]; then
-      rm -rf "$dest"
+      backup="${dest}.backup.$(date +%Y%m%d%H%M%S).$$"
+      while [ -e "$backup" ] || [ -L "$backup" ]; do
+        suffix="${suffix}x"
+        backup="${dest}.backup.$(date +%Y%m%d%H%M%S).$$.${suffix}"
+      done
+      mv "$dest" "$backup"
     elif [ -t 0 ]; then
       printf 'exists   -> %s\n         overwrite? [y/N] ' "$dest"
       read -r reply
-      case "$reply" in [yY]*) rm -rf "$dest" ;; *) echo "skipped  -> $dest"; return ;; esac
+      case "$reply" in
+        [yY]*)
+          backup="${dest}.backup.$(date +%Y%m%d%H%M%S).$$"
+          while [ -e "$backup" ] || [ -L "$backup" ]; do
+            suffix="${suffix}x"
+            backup="${dest}.backup.$(date +%Y%m%d%H%M%S).$$.${suffix}"
+          done
+          mv "$dest" "$backup"
+          ;;
+        *) echo "skipped  -> $dest"; return ;;
+      esac
     else
       echo "skipped  -> $dest (already exists; pass --force to overwrite)"
       return
@@ -46,19 +61,19 @@ install_to() {
   fi
 
   mkdir -p "$1"
-  if [ "$MODE" = "symlink" ]; then
-    mkdir -p "$dest"
-    for item in "${PAYLOAD[@]}"; do
-      ln -s "${SCRIPT_DIR}/${item}" "${dest}/${item}"
-    done
-    echo "linked   -> $dest"
-  else
-    mkdir -p "$dest"
-    for item in "${PAYLOAD[@]}"; do
-      cp -R "${SCRIPT_DIR}/${item}" "$dest/"
-    done
-    echo "copied   -> $dest"
+  if ! mkdir -p "$dest"; then
+    [ -n "$backup" ] && mv "$backup" "$dest"
+    return 1
   fi
+  for item in "${PAYLOAD[@]}"; do
+    if ! cp -R "${SCRIPT_DIR}/${item}" "$dest/"; then
+      rm -rf "$dest"
+      [ -n "$backup" ] && mv "$backup" "$dest"
+      return 1
+    fi
+  done
+  echo "copied   -> $dest"
+  [ -n "$backup" ] && echo "backup   -> $backup"
 }
 
 case "$TARGET" in
