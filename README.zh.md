@@ -191,6 +191,7 @@ python3 ~/.claude/skills/thinking-toolkit/update.py
 Thinking Toolkit 是智能体会执行的指令代码，应像软件更新一样对待 Markdown 的
 变化。已发布版本不可变，CI 会验证技能和归档的可复现性，更新始终需要用户显式
 启动并确认。信任边界、验证命令和漏洞报告方式见 [SECURITY.md](SECURITY.md)。
+发布流程和仓库保护设置记录在 [MAINTAINING.md](MAINTAINING.md)。
 
 ## 使用
 
@@ -225,6 +226,7 @@ thinking-toolkit/
 ├── agents/openai.yaml        # 可选的宿主发现元数据
 ├── scripts/                  # 验证与可复现发布构建
 ├── tests/                    # 回归与供应链测试
+├── MAINTAINING.md            # 发布流程与仓库保护设置
 ├── install.sh                # 将载荷复制到技能目录
 └── update.py                 # 经验证的显式更新与回滚
 ```

@@ -41,6 +41,7 @@ models. Works in any agent that supports the SKILL.md convention.
 | `update.py` | Verifies a release, displays changes, confirms, updates, and supports rollback |
 | `VERSION` | Semantic version shared by package names and installed copies |
 | `README.md` | Public repository documentation |
+| `MAINTAINING.md` | Trust decisions, repository safeguards, and release procedure |
 
 ## Development Commands
 
@@ -67,6 +68,8 @@ python3 scripts/build_release.py
   and ships the license, version marker, and explicit updater.
 - Release archives contain only the allowlisted payload, contain no links, and
   build byte-for-byte reproducibly.
+- Repository safeguards and the release process stay synchronized with
+  `MAINTAINING.md`; re-check GitHub settings after a transfer or recreation.
 
 ## Dependencies
 
