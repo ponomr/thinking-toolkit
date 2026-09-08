@@ -35,7 +35,17 @@ Updates are always initiated by the user. `update.py` verifies the target
 release and asset, displays added, removed, and changed files, asks for
 confirmation, and preserves the previous installation as a rollback backup.
 
+## Repository safeguards
+
+The protected `main` branch requires pull requests, linear history, resolved
+review conversations, and the `validate` status check. These rules also apply
+to administrators; force-push and branch deletion are disabled. Private
+vulnerability reporting and immutable releases are enabled at repository
+level. See [MAINTAINING.md](MAINTAINING.md) for the release checklist and the
+settings that must be re-verified after a repository transfer or recreation.
+
 ## Reporting a vulnerability
 
-Use GitHub private vulnerability reporting for this repository. Do not publish
-exploit details in a public issue before a fix is available.
+Use [GitHub private vulnerability reporting](https://github.com/ponomr/thinking-toolkit/security/advisories/new)
+for this repository. Do not publish exploit details in a public issue before a
+fix is available.

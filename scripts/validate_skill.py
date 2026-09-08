@@ -230,6 +230,7 @@ REPO_DOC_FILES = {
     "README.ru.md",
     "README.zh.md",
     "SECURITY.md",
+    "MAINTAINING.md",
     "LICENSE",
 }
 # Localized READMEs are intentionally non-English; the main README carries
@@ -361,6 +362,7 @@ def validate_project(root: Path, forbidden_terms: list[str] | None = None) -> li
         root / "install.sh",
         root / "update.py",
         root / "SECURITY.md",
+        root / "MAINTAINING.md",
         root / ".github" / "workflows" / "validate.yml",
         root / ".github" / "workflows" / "release.yml",
     ]

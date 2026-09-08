@@ -220,7 +220,8 @@ Thinking Toolkit is instruction code. Treat a change to its Markdown as you
 would treat a software update. Published releases are immutable, CI validates
 the skill and reproducibility of its archive, and updates always require a
 user action and confirmation. See [SECURITY.md](SECURITY.md) for the trust
-boundary, verification commands, and vulnerability reporting.
+boundary, verification commands, and vulnerability reporting. Release and
+repository maintenance is documented in [MAINTAINING.md](MAINTAINING.md).
 
 ## Usage
 
@@ -255,6 +256,7 @@ thinking-toolkit/
 ├── agents/openai.yaml        # optional host discovery metadata
 ├── scripts/                  # validation and deterministic release build
 ├── tests/                    # regression and supply-chain tests
+├── MAINTAINING.md            # release process and repository safeguards
 ├── install.sh                # copy payload into agent skill dirs
 └── update.py                 # verified updates and rollback
 ```
