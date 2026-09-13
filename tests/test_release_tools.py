@@ -89,6 +89,7 @@ class UpdaterTests(unittest.TestCase):
     def test_verified_update_and_rollback_end_to_end(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
+            payload_version = (PROJECT_ROOT / "VERSION").read_text().strip()
             release_dir = root / "release"
             archive, _ = BUILDER.build_archive(release_dir)
             target = root / "thinking-toolkit"
@@ -120,7 +121,7 @@ class UpdaterTests(unittest.TestCase):
                     "--target",
                     str(target),
                     "--to",
-                    "v1.0.0",
+                    f"v{payload_version}",
                     "--yes",
                 ],
                 check=True,
@@ -128,7 +129,7 @@ class UpdaterTests(unittest.TestCase):
                 text=True,
                 env=environment,
             )
-            self.assertEqual(UPDATER.current_version(target), "1.0.0")
+            self.assertEqual(UPDATER.current_version(target), payload_version)
             backup_line = next(
                 line for line in updated.stdout.splitlines() if line.startswith("backup: ")
             )

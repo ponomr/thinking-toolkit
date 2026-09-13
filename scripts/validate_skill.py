@@ -159,6 +159,9 @@ def validate_model_cards(root: Path) -> list[str]:
     skill_text = (root / "SKILL.md").read_text(encoding="utf-8")
     catalog_text = (references / "catalog.md").read_text(encoding="utf-8")
 
+    if "(references/catalog.md)" not in skill_text:
+        errors.append("SKILL.md does not route model selection through catalog.md")
+
     for filename, (title, category) in EXPECTED_MODELS.items():
         path = references / filename
         if not path.exists():
@@ -177,29 +180,12 @@ def validate_model_cards(root: Path) -> list[str]:
                 errors.append(
                     f"{path.relative_to(root)} is missing section: {section}"
                 )
-        expected_link = f"references/{filename}"
-        if expected_link not in skill_text:
-            errors.append(f"SKILL.md does not link to {expected_link}")
         if f"({filename})" not in catalog_text:
             errors.append(f"references/catalog.md does not link to {filename}")
-
-    # The model set is enumerated in three places that must not drift apart:
-    # the SKILL.md Fast Selection Map (fast router), the SKILL.md Model
-    # References link list, and the catalog. The link-list and catalog links are
-    # checked above; here we pin the Fast Selection Map so adding a card without
-    # a routing row (or vice versa) is a caught error, not a silent gap.
-    map_match = re.search(
-        r"## Fast Selection Map\n(.*?)\n## ", skill_text, re.DOTALL
-    )
-    if not map_match:
-        errors.append("SKILL.md is missing the Fast Selection Map section")
-    else:
-        selection_map = map_match.group(1)
-        for _, (title, _category) in EXPECTED_MODELS.items():
-            if title not in selection_map:
-                errors.append(
-                    f"SKILL.md Fast Selection Map has no row for: {title}"
-                )
+        if f"(references/{filename})" in skill_text:
+            errors.append(
+                f"SKILL.md duplicates the catalog link to references/{filename}"
+            )
 
     categories = [category for _, category in EXPECTED_MODELS.values()]
     if (

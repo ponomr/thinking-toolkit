@@ -51,19 +51,30 @@ class ValidatorTests(unittest.TestCase):
             errors = VALIDATOR.validate_project(copied)
             self.assertTrue(any("missing model card" in error for error in errors))
 
-    def test_model_missing_from_selection_map_is_reported(self) -> None:
+    def test_model_missing_from_catalog_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = self.copy_project(Path(temporary))
+            catalog = copied / "references" / "catalog.md"
+            text = catalog.read_text().replace(
+                "[Inversion](inversion.md)", "Inversion"
+            )
+            catalog.write_text(text, encoding="utf-8")
+            errors = VALIDATOR.validate_project(copied)
+            self.assertTrue(
+                any("catalog.md does not link to inversion.md" in e for e in errors)
+            )
+
+    def test_direct_model_link_in_skill_is_reported(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))
             skill = copied / "SKILL.md"
-            # Drop one model's routing row from the Fast Selection Map.
-            text = skill.read_text().replace(
-                "| Prevent failure by reasoning backward | Inversion |\n", ""
+            skill.write_text(
+                skill.read_text()
+                + "\n[Inversion](references/inversion.md)\n",
+                encoding="utf-8",
             )
-            skill.write_text(text, encoding="utf-8")
             errors = VALIDATOR.validate_project(copied)
-            self.assertTrue(
-                any("Fast Selection Map has no row for: Inversion" in e for e in errors)
-            )
+            self.assertTrue(any("duplicates the catalog link" in e for e in errors))
 
     def test_missing_logic_file_is_reported(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
