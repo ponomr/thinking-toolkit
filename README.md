@@ -6,12 +6,10 @@
 
 **30 battle-tested thinking models, packaged as one portable skill for any AI agent.**
 
-Thinking Toolkit teaches an agent *how to think about thinking*: given a messy
-real-world request — a decision to make, a problem to diagnose, a system to
-understand, a message to deliver — it selects the smallest useful set of
-structured thinking models, applies them faithfully step by step, and returns a
-concrete artifact: a weighted matrix, a causal map, a premortem table, a
-backward plan, a draft message.
+Thinking Toolkit gives an agent explicit, reusable thinking procedures. Invoke
+the toolkit, `/logic`, or a named model when you want a structured method; it
+then applies the smallest useful model set and returns a concrete artifact such
+as a weighted matrix, causal map, premortem table, backward plan, or draft.
 
 It is plain Markdown with zero runtime dependencies. If your agent can read
 files, it can use this skill.
@@ -45,17 +43,18 @@ Three commitments shape the design:
 ## How It Works
 
 When a model is named explicitly, the agent loads that card and follows it.
-When the request is open, it identifies the job (decide, diagnose, estimate,
-map, resolve, communicate), routes through the catalog's selection cues and
-contrast rules, and picks one primary model with at most two complements. It
-then frames the situation — stakes, reversibility, evidence — applies the
-card's procedure at quick, standard, or deep depth, tests the result for
-hidden assumptions and sensitivity, and closes with an artifact, an action,
-and a review trigger.
+When the toolkit is explicitly requested but the method is left open, it
+identifies the job, routes through the catalog's selection cues and contrast
+rules, and picks one primary model with at most two complements. Ordinary
+planning, analysis, problem-solving, and writing requests do not activate the
+toolkit automatically. Once invoked, it frames the situation, applies the
+card's procedure at an appropriate depth, tests material assumptions, and
+returns the requested artifact or action in a format suited to the request.
 
 The skill uses **progressive disclosure** to stay context-efficient: the agent
-first reads only `SKILL.md` (~180 lines), consults the routing catalog when
-selection is unclear, and loads *only* the model cards it actually needs.
+first reads the concise `SKILL.md`, consults the routing catalog when selection
+is authorized or an explicit alias must be resolved, and loads *only* the model
+cards it actually needs.
 Thirty models cost nothing until one is used.
 
 ## The Catalog
@@ -231,7 +230,7 @@ Ask for a model by name:
 > *"Compare these three vendors with a weighted matrix."*
 > *"Backcast from where we want the newsletter to be in three years."*
 
-Or just describe the situation and let the routing work:
+Or invoke Thinking Toolkit and describe the situation so it can choose:
 
 > *"Support tickets keep growing and I don't know where to start."*
 > → Pareto Analysis to find the vital few, then Five Whys on the top category.

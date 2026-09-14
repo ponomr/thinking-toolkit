@@ -1,6 +1,6 @@
 ---
 name: thinking-toolkit
-description: "A toolkit of 30 decision-making, problem-solving, systems-thinking, and communication models, plus a /logic mode that audits an argument's validity. This skill should be used when a user names a specific model, or describes a situation that calls for one: framing or reframing a problem, comparing options, setting priorities, tracing consequences, finding root causes, estimating an unknown quantity, planning toward a distant goal, mapping or stress-testing a system, resolving a conflict, giving feedback, or structuring a message. It should also be used to check reasoning for logical validity and fallacies. When the method is left open, the skill selects the smallest useful set of models automatically."
+description: "Apply a named Thinking Toolkit model or audit an argument with /logic. Use only when the user explicitly invokes the toolkit, names an included model or alias, or invokes /logic."
 ---
 
 # Thinking Toolkit
@@ -33,7 +33,10 @@ gap that materially affects the result.
 
 ### Automatic-selection mode
 
-Use this mode when the user describes a situation without naming a method.
+Use this mode only when the user explicitly asks Thinking Toolkit or a
+structured thinking toolkit to choose a method but does not name one. Do not
+select a model merely because an ordinary request could be approached with a
+framework.
 
 1. Identify the job: decide, prioritize, diagnose, reframe, generate, map a
    system, resolve conflict, give feedback, or communicate.
@@ -87,40 +90,12 @@ End with the decision, insight, draft, experiment, or next step the user asked
 for. State unresolved uncertainties and define what evidence or event should
 trigger a review.
 
-## Fast Selection Map
+## Catalog Routing
 
-| User need | Primary model |
-|---|---|
-| Examine a choice from distinct perspectives | Six Thinking Hats |
-| Sort work by urgency and importance | Eisenhower Matrix |
-| Trace downstream consequences | Second-Order Thinking |
-| Compare options across weighted criteria | Decision Matrix |
-| Prioritize by benefit and required work | Impact-Effort Matrix |
-| Check a conclusion for inferential leaps | Ladder of Inference |
-| Match decision effort to stakes and comparability | Hard Choice Model |
-| Decide and adapt under time pressure | OODA Loop |
-| Match action to the nature of a situation | Cynefin Framework |
-| Balance product speed and quality using confidence | Confidence Determines Speed vs. Quality |
-| Focus effort on the few contributors that drive most of an effect | Pareto Analysis |
-| Plan backward from a defined desirable future | Backcasting |
-| Organize possible causes of a defined effect | Ishikawa Diagram |
-| Trace one incident to a process-level fix | Five Whys |
-| Estimate an unknown quantity without direct data | Fermi Estimation |
-| Challenge a plan from an adversary's perspective | Red Teaming |
-| Reframe a problem at broader or narrower levels | Abstraction Laddering |
-| Resolve opposing positions through shared needs | Conflict Resolution Diagram |
-| Generate combinations across independent dimensions | Zwicky Box |
-| Run an end-to-end creative problem-solving process | Productive Thinking Model |
-| Prevent failure by reasoning backward | Inversion |
-| Decompose a problem or solution space | Issue Trees |
-| Rebuild from fundamental constraints and truths | First Principles |
-| Move from events to patterns, structures, and beliefs | Iceberg Model |
-| Map causal relationships and feedback loops | Connection Circles |
-| Map concepts and explicit propositions | Concept Map |
-| Explain goal-seeking or stabilizing behavior | Balancing Feedback Loop |
-| Explain compounding growth or decline | Reinforcing Feedback Loop |
-| Give specific, behavior-based feedback | Situation-Behavior-Impact |
-| Lead a message with its conclusion | Minto Pyramid |
+[The catalog](references/catalog.md) is the single index for model names,
+aliases, selection cues, category counts, and combination recipes. Read it to
+resolve an explicit alias or make an authorized automatic selection, then load
+only the selected model card or cards.
 
 ## Combine Models Deliberately
 
@@ -135,62 +110,13 @@ trigger a review.
 - Read the combination recipes in [the catalog](references/catalog.md) before
   constructing a sequence.
 
-## Response Shape
+## Shape the Response
 
-Adapt the headings to the request, but include these elements when useful:
-
-1. **Frame** — outcome, scope, constraints, and known evidence.
-2. **Selected model(s)** — name and concise selection rationale.
-3. **Inputs and assumptions** — clearly labeled.
-4. **Model artifact** — matrix, tree, map, sequence, draft, or structured notes.
-5. **Interpretation** — insights, trade-offs, uncertainty, and sensitivity.
-6. **Action** — decision, next step, owner, experiment, or review trigger.
-
-## Model References
-
-Read only the cards needed for the current request.
-
-### Decision making
-
-- [Six Thinking Hats](references/six-thinking-hats.md)
-- [Eisenhower Matrix](references/eisenhower-matrix.md)
-- [Second-Order Thinking](references/second-order-thinking.md)
-- [Decision Matrix](references/decision-matrix.md)
-- [Impact-Effort Matrix](references/impact-effort-matrix.md)
-- [Ladder of Inference](references/ladder-of-inference.md)
-- [Hard Choice Model](references/hard-choice-model.md)
-- [OODA Loop](references/ooda-loop.md)
-- [Cynefin Framework](references/cynefin-framework.md)
-- [Confidence Determines Speed vs. Quality](references/confidence-speed-quality.md)
-- [Pareto Analysis](references/pareto-analysis.md)
-- [Backcasting](references/backcasting.md)
-
-### Problem solving
-
-- [Ishikawa Diagram](references/ishikawa-diagram.md)
-- [Five Whys](references/five-whys.md)
-- [Abstraction Laddering](references/abstraction-laddering.md)
-- [Conflict Resolution Diagram](references/conflict-resolution-diagram.md)
-- [Zwicky Box](references/zwicky-box.md)
-- [Productive Thinking Model](references/productive-thinking-model.md)
-- [Inversion](references/inversion.md)
-- [Red Teaming](references/red-teaming.md)
-- [Issue Trees](references/issue-trees.md)
-- [First Principles](references/first-principles.md)
-- [Fermi Estimation](references/fermi-estimation.md)
-
-### Systems thinking
-
-- [Iceberg Model](references/iceberg-model.md)
-- [Connection Circles](references/connection-circles.md)
-- [Concept Map](references/concept-map.md)
-- [Balancing Feedback Loop](references/balancing-feedback-loop.md)
-- [Reinforcing Feedback Loop](references/reinforcing-feedback-loop.md)
-
-### Communication
-
-- [Situation-Behavior-Impact](references/situation-behavior-impact.md)
-- [Minto Pyramid](references/minto-pyramid.md)
+Match the output to the user's requested format and level of detail; no fixed
+set of headings is required. Include the selected model and a brief rationale
+when that helps the user follow the artifact. Label material assumptions and
+uncertainties, preserve the model's required artifact, and end with the
+decision, draft, insight, experiment, or next step the user requested.
 
 ## Logic Analysis (`/logic`)
 
@@ -198,9 +124,8 @@ The model cards above help the user *choose how to think*. The `/logic` mode doe
 something different: it *audits reasoning that already exists* — a claim, an
 argument, or a draft — and returns a verdict on its validity.
 
-Route to `/logic` when the user asks to "check the logic", "find the logical
-errors", "is this argument valid", "spot the fallacies", or gives a textbook
-logic task — in any language. It has three modes:
+Route here when the user explicitly invokes `/logic`, including with an
+argument, draft, or textbook logic task in any language. It has three modes:
 
 - **review** (default) — diagnose the argument and deliver a verdict; no rewrite.
 - **fix** — repair the reasoning with minimal intervention, preserving voice.

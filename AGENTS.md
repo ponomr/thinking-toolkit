@@ -22,8 +22,11 @@ models. Works in any agent that supports the SKILL.md convention.
 8. Do not commit changes unless the user explicitly requests a new commit.
 9. Stable users install copied payloads from immutable releases. Do not restore
    symlink installation or an install-from-main quick path.
-10. Updates are user-initiated and must verify the release and asset, show the
-    file changes, request confirmation, and preserve a rollback backup.
+10. Updates are user-initiated. Verify the release and asset, show the file
+    changes, and preserve a rollback backup. A requested normal upgrade needs no
+    second confirmation; stop and ask before a downgrade, after failed
+    verification, or when the diff reaches outside the selected skill. Never
+    bypass failed verification.
 
 ## Architecture
 
@@ -38,7 +41,7 @@ models. Works in any agent that supports the SKILL.md convention.
 | `tests/test_validate_skill.py` | Validator regression tests and project checks |
 | `agents/openai.yaml` | Optional host-specific discovery metadata; not required by the core skill |
 | `install.sh` | Copies a release payload and preserves replaced installations |
-| `update.py` | Verifies a release, displays changes, confirms, updates, and supports rollback |
+| `update.py` | Verifies a release, displays changes, updates with a backup, and supports rollback |
 | `VERSION` | Semantic version shared by package names and installed copies |
 | `README.md` | Public repository documentation |
 | `MAINTAINING.md` | Trust decisions, repository safeguards, and release procedure |
