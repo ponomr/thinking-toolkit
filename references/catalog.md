@@ -53,6 +53,7 @@ ask one short question or state the interpretation before proceeding.
 | Problem solving | [Productive Thinking Model](productive-thinking-model.md) | productive thinking, target future, DRIVE | A defined problem needs a complete creative process |
 | Problem solving | [Inversion](inversion.md) | premortem, reverse thinking, avoid failure | Failure modes or opposite conditions reveal the solution |
 | Problem solving | [Issue Trees](issue-trees.md) | logic tree, why tree, how tree | A large problem needs non-overlapping decomposition |
+| Problem solving | [After Action Review](after-action-review.md) | AAR, lessons learned, review what happened | A completed episode should become a lesson and a next action |
 | Problem solving | [First Principles](first-principles.md) | fundamental truths, reasoning from basics | Conventions or analogies constrain solution quality |
 | Systems thinking | [Iceberg Model](iceberg-model.md) | event-pattern-structure-mental model | Repeated events point to deeper system causes |
 | Systems thinking | [Connection Circles](connection-circles.md) | causal circle, relationship circle | Variables and feedback relationships need mapping |
@@ -77,6 +78,9 @@ ask one short question or state the interpretation before proceeding.
    - Use Issue Trees to decompose the full question space.
    - Use Iceberg Model to connect events to recurring patterns and structures.
    - Use Connection Circles to map mutual causation and feedback.
+   - Use After Action Review to compare the intended and actual outcome of one
+     completed episode, including a success, and decide what to sustain and
+     improve.
 5. Distinguish relationship maps:
    - Use Concept Map for semantic propositions between concepts.
    - Use Connection Circles for directional causal influence between variables.
