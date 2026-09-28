@@ -138,8 +138,8 @@ verified after publication. Future claims should refer to a named release and
 its verification result rather than to the current contents of `main`.
 
 `v1.1.0` adds the After Action Review card. After publication, the release was
-confirmed immutable, the archive matched `SHA256SUMS` and a local build
-byte for byte, an attestation exists for the archive digest, and a clean
-installation from the archive succeeded. `gh release verify` and
-`verify-asset` need a GitHub CLI release that provides them; run them, and the
-update and rollback path, with such a CLI before citing a full verification.
+confirmed immutable; `gh release verify` and `verify-asset` succeeded; the
+archive matched `SHA256SUMS` and a local build byte for byte; a clean
+installation succeeded; and an installed `v1.0.0` was updated to `v1.1.0` and
+rolled back through `update.py`. Release verification needs a GitHub CLI
+recent enough to provide `gh release verify`.
