@@ -143,3 +143,12 @@ archive matched `SHA256SUMS` and a local build byte for byte; a clean
 installation succeeded; and an installed `v1.0.0` was updated to `v1.1.0` and
 rolled back through `update.py`. Release verification needs a GitHub CLI
 recent enough to provide `gh release verify`.
+
+`v1.1.1` makes `update.py` leave archive-only files such as `install.sh` out of
+the installation, so fresh installs and updates produce the same file set.
+After publication, the release was confirmed immutable, `gh release verify` and
+`verify-asset` succeeded, the archive matched `SHA256SUMS` and a local build
+byte for byte, and an installation that had picked up `install.sh` lost it when
+updated by the `v1.1.1` updater. An installation still running an older
+`update.py` gains `install.sh` once more on its way to `v1.1.1`; the next
+update removes it.

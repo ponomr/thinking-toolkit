@@ -134,12 +134,12 @@ investigation*（Pareto → Iceberg → Ishikawa → Five Whys → OODA）——
 ### 推荐方式：验证发布版本
 
 ```bash
-gh release download v1.1.0 --repo ponomr/thinking-toolkit \
-  --pattern 'thinking-toolkit-v1.1.0.tar.gz' --pattern SHA256SUMS
-gh release verify v1.1.0 --repo ponomr/thinking-toolkit
-gh release verify-asset v1.1.0 thinking-toolkit-v1.1.0.tar.gz \
+gh release download v1.1.1 --repo ponomr/thinking-toolkit \
+  --pattern 'thinking-toolkit-v1.1.1.tar.gz' --pattern SHA256SUMS
+gh release verify v1.1.1 --repo ponomr/thinking-toolkit
+gh release verify-asset v1.1.1 thinking-toolkit-v1.1.1.tar.gz \
   --repo ponomr/thinking-toolkit
-tar -xzf thinking-toolkit-v1.1.0.tar.gz
+tar -xzf thinking-toolkit-v1.1.1.tar.gz
 ./thinking-toolkit/install.sh
 ```
 

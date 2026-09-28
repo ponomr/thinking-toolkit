@@ -157,12 +157,12 @@ CLI, OpenClaw и другие среды со SKILL.md. Установка — �
 ### Рекомендуемый способ: проверенный релиз
 
 ```bash
-gh release download v1.1.0 --repo ponomr/thinking-toolkit \
-  --pattern 'thinking-toolkit-v1.1.0.tar.gz' --pattern SHA256SUMS
-gh release verify v1.1.0 --repo ponomr/thinking-toolkit
-gh release verify-asset v1.1.0 thinking-toolkit-v1.1.0.tar.gz \
+gh release download v1.1.1 --repo ponomr/thinking-toolkit \
+  --pattern 'thinking-toolkit-v1.1.1.tar.gz' --pattern SHA256SUMS
+gh release verify v1.1.1 --repo ponomr/thinking-toolkit
+gh release verify-asset v1.1.1 thinking-toolkit-v1.1.1.tar.gz \
   --repo ponomr/thinking-toolkit
-tar -xzf thinking-toolkit-v1.1.0.tar.gz
+tar -xzf thinking-toolkit-v1.1.1.tar.gz
 ./thinking-toolkit/install.sh
 ```
 
