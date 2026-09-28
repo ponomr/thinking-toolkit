@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import io
 import os
+import re
 import shutil
 import subprocess
 import tarfile
@@ -130,6 +131,13 @@ class UpdaterTests(unittest.TestCase):
                 env=environment,
             )
             self.assertEqual(UPDATER.current_version(target), payload_version)
+            installer = (PROJECT_ROOT / "install.sh").read_text(encoding="utf-8")
+            installed_payload = re.search(
+                r"^PAYLOAD=\((.*)\)$", installer, re.MULTILINE
+            ).group(1).split()
+            self.assertEqual(
+                {path.name for path in target.iterdir()}, set(installed_payload)
+            )
             backup_line = next(
                 line for line in updated.stdout.splitlines() if line.startswith("backup: ")
             )

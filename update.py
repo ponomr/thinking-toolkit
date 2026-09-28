@@ -19,6 +19,9 @@ REPOSITORY = "ponomr/thinking-toolkit"
 BUNDLE_ROOT = "thinking-toolkit"
 TAG_PATTERN = re.compile(r"^v[0-9]+\.[0-9]+\.[0-9]+$")
 VERSION_PATTERN = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
+# Bootstrap files ship in the release archive but are not part of an installed
+# copy; install.sh leaves them out, so an update must too.
+ARCHIVE_ONLY = ("install.sh",)
 
 
 def run_gh(*arguments: str, capture: bool = False) -> str:
@@ -203,6 +206,8 @@ def update(target: Path, tag: str, assume_yes: bool, dry_run: bool) -> int:
             raise ValueError(
                 f"release tag {tag} does not match archive VERSION {release_version}"
             )
+        for name in ARCHIVE_ONLY:
+            (replacement / name).unlink(missing_ok=True)
 
         changes = describe_changes(target, replacement)
         print(f"installed: v{installed}")
