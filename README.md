@@ -154,12 +154,12 @@ copied payload from a fixed, immutable release.
 ### Recommended: verified release
 
 ```bash
-gh release download v1.0.0 --repo ponomr/thinking-toolkit \
-  --pattern 'thinking-toolkit-v1.0.0.tar.gz' --pattern SHA256SUMS
-gh release verify v1.0.0 --repo ponomr/thinking-toolkit
-gh release verify-asset v1.0.0 thinking-toolkit-v1.0.0.tar.gz \
+gh release download v1.1.0 --repo ponomr/thinking-toolkit \
+  --pattern 'thinking-toolkit-v1.1.0.tar.gz' --pattern SHA256SUMS
+gh release verify v1.1.0 --repo ponomr/thinking-toolkit
+gh release verify-asset v1.1.0 thinking-toolkit-v1.1.0.tar.gz \
   --repo ponomr/thinking-toolkit
-tar -xzf thinking-toolkit-v1.0.0.tar.gz
+tar -xzf thinking-toolkit-v1.1.0.tar.gz
 ./thinking-toolkit/install.sh
 ```
 
