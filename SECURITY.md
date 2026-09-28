@@ -20,8 +20,8 @@ software updates.
 With GitHub CLI installed, verify both the release and the downloaded asset:
 
 ```bash
-gh release verify v1.0.0 --repo ponomr/thinking-toolkit
-gh release verify-asset v1.0.0 thinking-toolkit-v1.0.0.tar.gz \
+gh release verify v1.1.0 --repo ponomr/thinking-toolkit
+gh release verify-asset v1.1.0 thinking-toolkit-v1.1.0.tar.gz \
   --repo ponomr/thinking-toolkit
 ```
 
