@@ -52,6 +52,24 @@ The builder rejects symlinks, normalizes archive metadata, and runs validation
 and tests unless `--skip-checks` is explicitly supplied. The release workflow
 does not use that escape hatch.
 
+## Adding a model card
+
+The number of cards is not a cap, but every card adds a routing decision. Admit
+a new card only when all of the following hold:
+
+1. It produces an artifact that no existing card produces, and the difference
+   from each close neighbor is written as a selection rule in
+   `references/catalog.md`.
+2. Its aliases do not collide with the name or aliases of an existing model.
+3. On a small set of realistic requests, including at least one control request
+   that should route elsewhere, the skill with the card selects it where
+   intended, avoids it on the control, and returns a better or leaner artifact
+   than the current catalog.
+
+An admitted card also updates `EXPECTED_MODELS` and the category counts in
+`scripts/validate_skill.py`, the card count in `AGENTS.md`, the counts and
+catalog tables in all three READMEs, and the minor version.
+
 ## Release procedure
 
 1. Change the payload and update all three READMEs when user-visible behavior

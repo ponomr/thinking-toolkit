@@ -39,7 +39,8 @@ select a model merely because an ordinary request could be approached with a
 framework.
 
 1. Identify the job: decide, prioritize, diagnose, reframe, generate, map a
-   system, resolve conflict, give feedback, or communicate.
+   system, resolve conflict, give feedback, communicate, or learn from a
+   completed attempt.
 2. Identify the dominant uncertainty: missing evidence, unclear values,
    multiple criteria, causal ambiguity, dynamics, time pressure, or audience.
 3. Read [the catalog](references/catalog.md) and shortlist the models whose

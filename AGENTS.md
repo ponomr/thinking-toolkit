@@ -13,7 +13,9 @@ models. Works in any agent that supports the SKILL.md convention.
 4. Never add external URLs or external Markdown links to the skill payload
    (`SKILL.md`, `references/`, `logic/`, `agents/`). READMEs, `SECURITY.md`,
    and `LICENSE` are repository documentation and may cite external resources.
-5. Preserve all 30 model cards and all four catalog categories.
+5. Preserve all 31 model cards and all four catalog categories. The count is
+   not a cap: add a card only when it meets the admission criteria in
+   `MAINTAINING.md`.
 6. The `/logic` module (`logic/`) is an English payload — no Cyrillic, even for
    trigger phrases; `/logic` recognizes and replies in the user's language by
    instruction, not by hardcoded examples. Keep it lean (4 files); it ships
@@ -56,7 +58,7 @@ python3 scripts/build_release.py
 
 ## Validation Invariants
 
-- The catalog contains exactly 30 model cards: 12 decision-making, 11
+- The catalog contains exactly 31 model cards: 12 decision-making, 12
   problem-solving, 5 systems-thinking, and 2 communication models.
 - Every card contains the required operational sections.
 - Every Markdown link in the skill payload is internal and resolves to an

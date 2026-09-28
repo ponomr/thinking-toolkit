@@ -4,7 +4,7 @@
 
 **English** · [Русский](README.ru.md) · [中文](README.zh.md)
 
-**30 battle-tested thinking models, packaged as one portable skill for any AI agent.**
+**31 battle-tested thinking models, packaged as one portable skill for any AI agent.**
 
 Thinking Toolkit gives an agent explicit, reusable thinking procedures. Invoke
 the toolkit, `/logic`, or a named model when you want a structured method; it
@@ -55,7 +55,7 @@ The skill uses **progressive disclosure** to stay context-efficient: the agent
 first reads the concise `SKILL.md`, consults the routing catalog when selection
 is authorized or an explicit alias must be resolved, and loads *only* the model
 cards it actually needs.
-Thirty models cost nothing until one is used.
+Thirty-one models cost nothing until one is used.
 
 ## The Catalog
 
@@ -76,12 +76,13 @@ Thirty models cost nothing until one is used.
 | Pareto Analysis | A few contributors may drive most of a measured effect |
 | Backcasting | A distant goal needs a path from the endpoint to today |
 
-### Problem solving — 11 models
+### Problem solving — 12 models
 
 | Model | Use when |
 |---|---|
 | Ishikawa Diagram | A defined effect has many possible causes |
 | Five Whys | One incident needs its causal chain traced to a process fix |
+| After Action Review | A completed episode should become a lesson and a next action |
 | Abstraction Laddering | The problem statement may be too narrow or vague |
 | Conflict Resolution Diagram | Opposing demands appear mutually exclusive |
 | Zwicky Box | A solution can be assembled from independent dimensions |
@@ -117,7 +118,7 @@ to appear thorough.
 
 ## Logic analysis (`/logic`)
 
-The 30 cards help you *choose how to think*. `/logic` does the opposite job: it
+The 31 cards help you *choose how to think*. `/logic` does the opposite job: it
 *audits reasoning that already exists* — a claim, an argument, or a draft — and
 returns a verdict on its validity.
 
@@ -250,7 +251,7 @@ thinking-toolkit/
 ├── VERSION                   # installed and release version
 ├── references/
 │   ├── catalog.md            # index, aliases, selection cues, recipes
-│   └── <model>.md            # 30 operational cards, one per model
+│   └── <model>.md            # 31 operational cards, one per model
 ├── logic/                    # /logic procedure and focused references
 ├── agents/openai.yaml        # optional host discovery metadata
 ├── scripts/                  # validation and deterministic release build
@@ -286,7 +287,7 @@ matches the card set exactly.
 - **Depth matched to stakes.** Quick pass for reversible low-stakes calls; deep
   pass — with sensitivity checks and disconfirming evidence — for consequential
   or irreversible ones.
-- **Deterministic quality gates.** A stdlib-only validator keeps all 30 cards
+- **Deterministic quality gates.** A stdlib-only validator keeps all 31 cards
   structurally complete and the routing tables in sync with the card set.
 
 ## License

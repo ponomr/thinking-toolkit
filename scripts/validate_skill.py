@@ -41,6 +41,7 @@ EXPECTED_MODELS = {
     "inversion.md": ("Inversion", "Problem solving"),
     "issue-trees.md": ("Issue Trees", "Problem solving"),
     "first-principles.md": ("First Principles", "Problem solving"),
+    "after-action-review.md": ("After Action Review", "Problem solving"),
     "iceberg-model.md": ("Iceberg Model", "Systems thinking"),
     "connection-circles.md": ("Connection Circles", "Systems thinking"),
     "concept-map.md": ("Concept Map", "Systems thinking"),
@@ -195,7 +196,7 @@ def validate_model_cards(root: Path) -> list[str]:
         errors.append("references/catalog.md exceeds 100 lines without a contents section")
     expected_counts = {
         "Decision making": 12,
-        "Problem solving": 11,
+        "Problem solving": 12,
         "Systems thinking": 5,
         "Communication": 2,
     }
