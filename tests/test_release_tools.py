@@ -2,13 +2,12 @@ from __future__ import annotations
 
 import importlib.util
 import io
-import os
 import re
 import shutil
-import subprocess
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -90,7 +89,7 @@ class UpdaterTests(unittest.TestCase):
     def test_verified_update_and_rollback_end_to_end(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            payload_version = (PROJECT_ROOT / "VERSION").read_text().strip()
+            payload_version = (PROJECT_ROOT / "VERSION").read_text(encoding="utf-8").strip()
             release_dir = root / "release"
             archive, _ = BUILDER.build_archive(release_dir)
             target = root / "thinking-toolkit"
@@ -99,37 +98,21 @@ class UpdaterTests(unittest.TestCase):
             (target / "SKILL.md").write_text("old\n", encoding="utf-8")
             shutil.copy2(PROJECT_ROOT / "update.py", target / "update.py")
 
-            binary_dir = root / "bin"
-            binary_dir.mkdir()
-            fake_gh = binary_dir / "gh"
-            fake_gh.write_text(
-                "#!/bin/sh\n"
-                "if [ \"$1 $2\" = \"release download\" ]; then\n"
-                "  while [ \"$1\" != \"--dir\" ]; do shift; done\n"
-                "  cp \"$FAKE_RELEASE_ARCHIVE\" \"$2/\"\n"
-                "fi\n",
-                encoding="utf-8",
-            )
-            fake_gh.chmod(0o755)
-            environment = os.environ.copy()
-            environment["PATH"] = f"{binary_dir}{os.pathsep}{environment['PATH']}"
-            environment["FAKE_RELEASE_ARCHIVE"] = str(archive)
+            calls = []
+            def fake_gh(*arguments, capture=False):
+                calls.append(arguments)
+                if arguments[:2] == ("release", "download"):
+                    destination = Path(arguments[arguments.index("--dir") + 1])
+                    shutil.copy2(archive, destination / archive.name)
+                elif arguments[:2] not in {
+                    ("release", "verify"), ("release", "verify-asset")
+                }:
+                    raise AssertionError(f"unexpected CLI call: {arguments}")
+                return ""
 
-            updated = subprocess.run(
-                [
-                    "python3",
-                    str(target / "update.py"),
-                    "--target",
-                    str(target),
-                    "--to",
-                    f"v{payload_version}",
-                    "--yes",
-                ],
-                check=True,
-                capture_output=True,
-                text=True,
-                env=environment,
-            )
+            with patch.object(UPDATER, "run_gh", side_effect=fake_gh):
+                UPDATER.update(target, f"v{payload_version}", True, False)
+            self.assertEqual([call[1] for call in calls], ["verify", "download", "verify-asset"])
             self.assertEqual(UPDATER.current_version(target), payload_version)
             installer = (PROJECT_ROOT / "install.sh").read_text(encoding="utf-8")
             installed_payload = re.search(
@@ -138,26 +121,11 @@ class UpdaterTests(unittest.TestCase):
             self.assertEqual(
                 {path.name for path in target.iterdir()}, set(installed_payload)
             )
-            backup_line = next(
-                line for line in updated.stdout.splitlines() if line.startswith("backup: ")
-            )
-            backup = Path(backup_line.removeprefix("backup: "))
+            backups = list(root.glob(".thinking-toolkit.backup-*"))
+            self.assertEqual(len(backups), 1)
+            backup = backups[0]
             self.assertEqual(UPDATER.current_version(backup), "0.9.0")
-
-            subprocess.run(
-                [
-                    "python3",
-                    str(target / "update.py"),
-                    "--target",
-                    str(target),
-                    "--rollback",
-                    str(backup),
-                    "--yes",
-                ],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
+            UPDATER.rollback(target, backup, True, False)
             self.assertEqual(UPDATER.current_version(target), "0.9.0")
 
 

@@ -26,7 +26,9 @@ predicates are distributed in negatives (E, O).
 ### The eight rules of the syllogism
 
 A categorical syllogism has exactly three terms across three propositions (two
-premises, one conclusion). It is valid only if all eight hold:
+premises, one conclusion). Use modern semantics unless the task explicitly
+requires traditional nonempty-term assumptions: universal statements alone do
+not establish that their subject classes have members. Check all eight rules:
 
 1. **Three terms only.** Exactly three; a fourth (often via
    [equivocation](fallacies.md)) is the *four-term fallacy*.
@@ -38,12 +40,20 @@ premises, one conclusion). It is valid only if all eight hold:
 5. **A negative premise requires a negative conclusion, and vice versa.**
 6. **No conclusion from two particular premises.**
 7. **If either premise is particular, the conclusion must be particular.**
-8. **If either premise is negative, the conclusion must be negative** (restates
-   the negative-handling of rules 4–5 as a quick check).
+8. **Do not infer existence from universal premises alone.** A particular
+   conclusion needs existential support. If the exercise instead assumes
+   nonempty terms, state exactly which existence assumption licenses the
+   inference; do not silently import it.
 
 Fast audit: check three-terms, then the middle (rule 2), then distribution in the
 conclusion (rule 3), then the negative/particular quantity rules (4–8). Most
-invalid real-world syllogisms fail rule 2 or rule 3.
+invalid real-world syllogisms fail rule 2 or rule 3. Check rule 8 separately
+whenever the conclusion asserts that something exists.
+
+*Example (existential fallacy under modern semantics):* "All M are P; all S
+are M; therefore some S are P." Empty S, M, and P classes make both universal
+premises true and the particular conclusion false. Adding "Some S exists"
+licenses this example's conclusion; that additional premise must be explicit.
 
 *Example (invalid):* "All auditors are careful; she is careful; so she is an
 auditor." Middle term "careful" is the predicate of two affirmatives, never

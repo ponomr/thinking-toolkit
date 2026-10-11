@@ -87,11 +87,16 @@ A founder asks whether a support team can handle launching in a new market.
 Expected new users are decomposed into reachable audience, realistic signup
 rate, and support-contact rate per user per month. Bounds give 400 to 2,500
 extra tickets monthly, with a central estimate near 1,000. An agent handles
-roughly 300 tickets monthly, so the range implies one to eight additional
-agents, most likely around three. The cross-check against the current market's
-tickets-per-user rate falls in the same range. The decision is robust: hiring
-two agents now with a contractor on standby covers the plausible range, so no
-expensive market study is needed.
+roughly 300 tickets monthly, so the range requires two to nine additional
+agents (round capacity requirements upward), with four for the central scenario.
+The central scenario is an illustrative estimate, not a most-likely outcome
+without a probability model. The cross-check against the current market's
+tickets-per-user rate falls in the same range. Hiring four agents covers the
+central scenario only; covering the upper scenario requires five more equivalent
+agents or another verified source of capacity. Stage hiring only if reserve
+capacity can be activated before the backlog breaches the service target, with
+contact-rate monitoring and an explicit activation trigger. Otherwise refine
+the uncertain demand estimate before committing to the launch.
 
 ## Common Pitfalls
 

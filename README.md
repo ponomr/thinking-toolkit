@@ -16,6 +16,8 @@ files, it can use this skill.
 
 ## Why
 
+Unreleased 1.1.2 corrects staffing capacity and labels the backcasting conversion assumption. Logic verdicts distinguish deduction, induction, and insufficient evidence; categorical checks make existence assumptions explicit. Codex metadata preserves explicit-only invocation. Regression tests use explicit UTF-8 reads and an in-process GitHub CLI mock on all platforms. Installation commands below still target the published 1.1.1 release.
+
 Left to itself, an LLM agent reasons in prose that sounds convincing and skips
 steps. Meanwhile engineering, strategy, intelligence analysis, and
 organizational learning have spent decades turning the situations agents face

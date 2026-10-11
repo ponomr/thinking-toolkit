@@ -81,15 +81,21 @@ the English and Latin name and the mechanism.
 
 ## Step 4 — Separate validity from truth, then deliver the verdict
 
-State, independently: (a) whether the form is valid, and (b) whether the premises
-are true, unsupported, or false. A verdict conflating the two is itself an error.
+For deductive arguments, state independently whether the form is valid and
+whether the premises are established, unsupported, or false. If the argument
+cannot be reconstructed reliably, report undetermined rather than forcing a
+validity verdict. For non-deductive arguments, assess strength and its limits;
+formal validity is not applicable. Do not infer premise truth from a valid form.
 
 ### Verdict format
 
 Adapt headings to the request; output in the user's language.
 
 ```
-Verdict: <valid | N errors (K critical, M contestable)>
+Verdict: <deductively valid | deductively invalid | inductively strong |
+          inductively weak | undetermined>
+Evidence status: <established | mixed | unsupported | contradicted>
+Findings: <none identified | N errors (K critical, M contestable)>
 Argument structure: <thesis; premises; inference form>
 
 | # | Location | Error (English + Latin) | Why it fails | Fix |

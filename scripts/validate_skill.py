@@ -120,15 +120,23 @@ def validate_agent_metadata(metadata_path: Path) -> list[str]:
     errors: list[str] = []
     text = metadata_path.read_text(encoding="utf-8")
     expected_keys = ["display_name", "short_description", "default_prompt"]
-    found_keys = re.findall(r"^  ([a-z_]+):", text, re.MULTILINE)
+    blocks = re.findall(r"^([a-z_]+):\s*\n((?:[ \t]+[^\n]*\n|\n)*)", text, re.MULTILINE)
+    if [name for name, _ in blocks] != ["interface", "policy"]:
+        errors.append("agents/openai.yaml must contain interface and policy blocks in that order")
+    interfaces = [body for name, body in blocks if name == "interface"]
+    policies = [body for name, body in blocks if name == "policy"]
+    interface = interfaces[0] if len(interfaces) == 1 else ""
+    policy = policies[0] if len(policies) == 1 else ""
+    found_keys = re.findall(r"^  ([a-z_]+):", interface, re.MULTILINE)
     if found_keys != expected_keys:
         errors.append(
             "agents/openai.yaml interface must contain display_name, "
             "short_description, and default_prompt in that order"
         )
-
+    if not re.fullmatch(r"  allow_implicit_invocation: false\s*", policy):
+        errors.append("agents/openai.yaml policy must set allow_implicit_invocation: false")
     values = dict(
-        re.findall(r'^  ([a-z_]+):\s+"([^"]*)"\s*$', text, re.MULTILINE)
+        re.findall(r'^  ([a-z_]+):\s+"([^"]*)"\s*$', interface, re.MULTILINE)
     )
     if values.get("display_name") != "Thinking Toolkit":
         errors.append("agents/openai.yaml has an unexpected display_name")

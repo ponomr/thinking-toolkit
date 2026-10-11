@@ -40,7 +40,7 @@ class ValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))
             installer = copied / "install.sh"
-            installer.write_text(installer.read_text() + "\n# --symlink\n", encoding="utf-8")
+            installer.write_text(installer.read_text(encoding="utf-8") + "\n# --symlink\n", encoding="utf-8")
             errors = VALIDATOR.validate_project(copied)
             self.assertTrue(any("must not offer symlink" in error for error in errors))
 
@@ -55,7 +55,7 @@ class ValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))
             catalog = copied / "references" / "catalog.md"
-            text = catalog.read_text().replace(
+            text = catalog.read_text(encoding="utf-8").replace(
                 "[Inversion](inversion.md)", "Inversion"
             )
             catalog.write_text(text, encoding="utf-8")
@@ -69,7 +69,7 @@ class ValidatorTests(unittest.TestCase):
             copied = self.copy_project(Path(temporary))
             skill = copied / "SKILL.md"
             skill.write_text(
-                skill.read_text()
+                skill.read_text(encoding="utf-8")
                 + "\n[Inversion](references/inversion.md)\n",
                 encoding="utf-8",
             )
@@ -87,7 +87,7 @@ class ValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))
             path = copied / "logic" / "overview.md"
-            path.write_text(path.read_text() + "\n" + chr(0x041f), encoding="utf-8")
+            path.write_text(path.read_text(encoding="utf-8") + "\n" + chr(0x041f), encoding="utf-8")
             errors = VALIDATOR.validate_project(copied)
             self.assertTrue(any("Cyrillic" in error for error in errors))
 
@@ -102,7 +102,7 @@ class ValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))
             path = copied / "references" / "catalog.md"
-            path.write_text(path.read_text() + "\n" + chr(0x041f), encoding="utf-8")
+            path.write_text(path.read_text(encoding="utf-8") + "\n" + chr(0x041f), encoding="utf-8")
             errors = VALIDATOR.validate_project(copied)
             self.assertTrue(any("Cyrillic" in error for error in errors))
 
@@ -111,7 +111,7 @@ class ValidatorTests(unittest.TestCase):
             copied = self.copy_project(Path(temporary))
             path = copied / "references" / "catalog.md"
             sample = "https" + "://" + "example.invalid"
-            path.write_text(path.read_text() + "\n" + sample, encoding="utf-8")
+            path.write_text(path.read_text(encoding="utf-8") + "\n" + sample, encoding="utf-8")
             errors = VALIDATOR.validate_project(copied)
             self.assertTrue(any("external URL" in error for error in errors))
 
@@ -120,7 +120,7 @@ class ValidatorTests(unittest.TestCase):
             copied = self.copy_project(Path(temporary))
             path = copied / "references" / "catalog.md"
             path.write_text(
-                path.read_text() + "\n[Missing](missing-card.md)",
+                path.read_text(encoding="utf-8") + "\n[Missing](missing-card.md)",
                 encoding="utf-8",
             )
             errors = VALIDATOR.validate_project(copied)
@@ -131,7 +131,7 @@ class ValidatorTests(unittest.TestCase):
             copied = self.copy_project(Path(temporary))
             path = copied / "agents" / "openai.yaml"
             path.write_text(
-                path.read_text().replace("$thinking-toolkit", "$other-skill"),
+                path.read_text(encoding="utf-8").replace("$thinking-toolkit", "$other-skill"),
                 encoding="utf-8",
             )
             errors = VALIDATOR.validate_project(copied)
@@ -142,7 +142,7 @@ class ValidatorTests(unittest.TestCase):
             copied = self.copy_project(Path(temporary))
             path = copied / "references" / "minto-pyramid.md"
             path.write_text(
-                path.read_text().replace("## Contents", "## Navigation", 1),
+                path.read_text(encoding="utf-8").replace("## Contents", "## Navigation", 1),
                 encoding="utf-8",
             )
             errors = VALIDATOR.validate_project(copied)
@@ -154,7 +154,7 @@ class ValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))
             path = copied / "SKILL.md"
-            path.write_text(path.read_text() + "\n" + chr(0x041F), encoding="utf-8")
+            path.write_text(path.read_text(encoding="utf-8") + "\n" + chr(0x041F), encoding="utf-8")
             errors = VALIDATOR.validate_project(copied)
             self.assertTrue(any("Cyrillic" in error for error in errors))
 
@@ -163,7 +163,7 @@ class ValidatorTests(unittest.TestCase):
             copied = self.copy_project(Path(temporary))
             term = "blocked-brand"
             path = copied / "references" / "catalog.md"
-            path.write_text(path.read_text() + "\n" + term, encoding="utf-8")
+            path.write_text(path.read_text(encoding="utf-8") + "\n" + term, encoding="utf-8")
             errors = VALIDATOR.validate_project(copied, [term])
             self.assertTrue(any("forbidden term" in error for error in errors))
 

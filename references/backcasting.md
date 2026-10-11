@@ -94,8 +94,9 @@ that would trigger re-planning the path.
 ## Worked Example
 
 A two-person newsletter wants a sustainable paid publication in three years:
-5,000 paying subscribers and one full-time editor. Working backward: paid
-conversion at that scale requires roughly 100,000 engaged free readers; that
+5,000 paying subscribers and one full-time editor. Working backward,
+assuming 5% free-to-paid conversion gives 100,000 engaged free readers for
+5,000 paid subscribers; validate that illustrative conversion assumption. That
 requires an owned distribution channel rather than rented social reach; that
 requires a repeatable format readers cite and share; that requires knowing
 which of three current formats earns the most retention. The long-lead item is

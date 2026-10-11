@@ -2,3 +2,6 @@ interface:
   display_name: "Thinking Toolkit"
   short_description: "Apply a named or explicitly requested thinking model"
   default_prompt: "Use $thinking-toolkit to select and apply a thinking model to this situation."
+
+policy:
+  allow_implicit_invocation: false

@@ -46,9 +46,13 @@ The premises are unproven, assume the conclusion, or are irrelevant.
   agree" with no expert, field, or study identified.
 - **Appeal to the crowd — *argumentum ad populum***. Wide belief offered as proof.
   *Example:* "Millions use this diet, so it works."
-- **Appeal to fear or force — *ad baculum* / *ad misericordiam***. Substituting a
-  threat or a plea for pity in place of a reason. *Example:* "Approve the budget
-  or the team gets blamed for the miss."
+- **Appeal to fear or force — *ad baculum***. Substituting a threat for support
+  of the conclusion. *Example:* "Approve the budget or the team gets blamed for
+  the miss." A relevant, evidenced consequence is not automatically a fallacy.
+- **Appeal to pity — *ad misericordiam***. Substituting a plea for sympathy for
+  support of the conclusion. *Example:* "The forecast must be correct because
+  the team worked so hard on it." Compassion may matter to a decision without
+  establishing the truth of an unrelated claim.
 
 ## Errors against the inference
 
