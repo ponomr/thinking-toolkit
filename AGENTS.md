@@ -22,7 +22,8 @@ Commands: `python3 scripts/validate_skill.py .`, `python3 -m unittest discover -
 6. `logic/` is an English payload with no Cyrillic, even for trigger phrases: the
    module learns the user's language by instruction. Keep it lean.
 7. Keep claims, assumptions, hypotheses, and user-provided facts distinct.
-8. Do not commit changes unless the user explicitly requests a new commit.
+8. In your own task branch, commit and push as you go; elsewhere commit only
+   when the user asks.
 9. Users install copied payloads from immutable releases. Do not restore
    symlink installation or an install-from-main quick path.
 10. Updates are user-initiated. Verify the release and asset, show the file
