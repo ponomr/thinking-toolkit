@@ -59,7 +59,7 @@ a new card only when all of the following hold:
 
 1. It produces an artifact that no existing card produces, and the difference
    from each close neighbor is written as a selection rule in
-   `references/catalog.md`.
+   the appropriate `references/selection/` guide.
 2. Its aliases do not collide with the name or aliases of an existing model.
 3. On a small set of realistic requests, including at least one control request
    that should route elsewhere, the skill with the card selects it where
@@ -152,3 +152,15 @@ byte for byte, and an installation that had picked up `install.sh` lost it when
 updated by the `v1.1.1` updater. An installation still running an older
 `update.py` gains `install.sh` once more on its way to `v1.1.1`; the next
 update removes it.
+
+## Routing-only optimization
+
+The 1.2.0 development change preserves all cards and logic files. Names and
+aliases live in `references/catalog.md`; selection cues and contrast rules live
+in the category guides; combinations are optional. New routing files remain
+inside `references/`, so recursive release/install/update behavior still applies.
+
+Use `python3 scripts/measure_context.py` for static footprint, then inspect
+`docs/evaluation/results.md` for behavior evidence. Static bytes/words and logical
+read counts do not establish total token savings. Further card compression is
+conditional on evidence and must preserve required artifacts and safeguards.

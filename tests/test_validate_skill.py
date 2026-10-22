@@ -29,6 +29,31 @@ class ValidatorTests(unittest.TestCase):
     def test_current_project_is_valid(self) -> None:
         self.assertEqual(VALIDATOR.validate_project(PROJECT_ROOT), [])
 
+    def test_missing_selection_guide_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = self.copy_project(Path(temporary))
+            (copied / "references/selection/systems-thinking.md").unlink()
+            errors = VALIDATOR.validate_project(copied)
+            self.assertTrue(any("missing routing file" in e for e in errors))
+
+    def test_alias_collision_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = self.copy_project(Path(temporary))
+            index = copied / "references/catalog.md"
+            index.write_text(index.read_text().replace("premortem", "six hats"))
+            errors = VALIDATOR.validate_project(copied)
+            self.assertTrue(any("alias collision" in e for e in errors))
+
+    def test_model_missing_from_selection_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = self.copy_project(Path(temporary))
+            guide = copied / "references/selection/systems-thinking.md"
+            guide.write_text(guide.read_text().replace(
+                "[Concept Map](../concept-map.md)", "Concept Map"))
+            errors = VALIDATOR.validate_project(copied)
+            self.assertTrue(any("selection guide does not link to concept-map.md" in e
+                                for e in errors))
+
     def test_invalid_version_is_reported(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             copied = self.copy_project(Path(temporary))

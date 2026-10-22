@@ -1,0 +1,151 @@
+[
+  {
+    "id": "named",
+    "selected_models": [
+      "Issue Trees"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/issue-trees.md"
+    ],
+    "answer": "Issue Trees separates testable explanations without claiming a cause.\n\nRoot: Why did reported trial-to-paid conversion fall last month versus the prior comparable cohort?\n├─ Apparent change: measurement or comparability\n│  ├─ Tracking/denominator changed — hypothesis; audit events and definitions; owner: analytics role, unassigned.\n│  └─ New cohorts have less time to convert — hypothesis; compare equal observation windows; owner: analytics role, unassigned.\n└─ Real change under consistent measurement\n   ├─ Trial population mix shifted — hypothesis; obtain channel/segment shares; owner: acquisition role, unassigned.\n   └─ Conversion within comparable segments fell\n      ├─ Fewer reached purchase decision — inspect activation/use funnel.\n      └─ Fewer bought after reaching decision — inspect checkout/value/price barriers.\n      Both hypotheses; evidence absent; owners: product/checkout roles, unassigned.\n\nDecomposition: measurement validity, then mix versus within-segment rates, then funnel stage. These can coexist; quantify contributions before adding them. Check missing segments and overlapping stage definitions.\n\nKnown from you: onset last month; no segment data. No branch is established. Prioritize event/cohort audit, then collect denominators and funnel counts; stop expanding when a leaf has a falsifiable test and assigned owner.",
+    "clarification_count": 0
+  },
+  {
+    "id": "alias",
+    "selected_models": [
+      "Inversion"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/inversion.md"
+    ],
+    "answer": "Inversion premortem: imagine Friday's migration caused customer-data loss. The following are failure hypotheses, not forecasts. Proposed success: complete, usable data with recoverability; confirm tolerable downtime/data loss before go/no-go.\n\n| Failure condition | Mechanism | Severity | Plausibility | Early signal | Prevention/response | Proposed owner |\n|---|---|---|---|---|---|---|\n| Backup cannot restore | Copy exists but is unusable | Critical | Unknown | Isolated restore fails or mismatches | Restore and verify counts/integrity before cutover | Backup lead |\n| Rollback fails | Partial writes/schema changes prevent return | Critical | Unknown | Rehearsal exceeds recovery window | Timed end-to-end rollback rehearsal | Migration lead |\n| Silent data mismatch | Missing/incorrect records survive cutover | High | Unknown | Reconciliation differences | Sample rehearsal and full reconciliation; stop on unexplained mismatch | Data owner |\n\nUntested restoration and rollback are user-provided facts; they establish uncertainty, not certain failure. Assign named owners now. Top safeguards: verified restore, rehearsed rollback, reconciliation. Stop Friday's cutover if recoverability or acceptable loss/window remains unverified. Residual risk: production-specific failures despite rehearsal. Review at pre-cutover go/no-go and after migration; keep tests bounded to preserve the migration's value.",
+    "clarification_count": 0
+  },
+  {
+    "id": "select-priority",
+    "selected_models": [
+      "Eisenhower Matrix"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/eisenhower-matrix.md"
+    ],
+    "answer": "Eisenhower Matrix fits this week's urgency-versus-importance choice. Assumption: you own service continuity and strategy; confirm delegation authority.\n\n| Quadrant | Task | Reason | Action | Proposed owner | Due/review |\n|---|---|---|---|---|---|\n| Important, urgent | Customer outage | Active customer impact | Contain now; communicate recovery | Incident lead | Now; review after recovery |\n| Important, not urgent | Strategy due next month | Advances longer-term goals | Protect two feasible work blocks this week after containment | Strategy owner | This week; weekly review |\n| Urgent, not important (provisional) | Optional meeting tomorrow | Near date; no stated goal contribution | Ask for agenda/async update; delegate only with authority and brief | Organizer/delegate | Before tomorrow |\n| Neither | No confirmed item | Optional alone does not establish this quadrant | Drop meeting if no time-sensitive purpose emerges | You | Today |\n\nCapacity: outage work takes precedence; strategy blocks must fit remaining capacity. No calendar changes made. After recovery, identify one prevention task from the actual outage cause to reduce recurring urgency; do not invent that cause now.",
+    "clarification_count": 0
+  },
+  {
+    "id": "select-system",
+    "selected_models": [
+      "Connection Circles"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/connection-circles.md"
+    ],
+    "answer": "Connection Circles fits a feedback hypothesis. Boundary: support ticket handling over days/weeks; no quantitative forecast.\n\nVariables arranged around the circle: unresolved-ticket backlog B, waiting time W, follow-up arrival rate F, agent workload L, capacity available for initial resolution C. Each can vary; C means available capacity, not staffing headcount.\n\n| Link | Mechanism | Delay | Evidence/confidence |\n|---|---|---|---|\n| B +→ W | More queued work extends waits | Queue-dependent | User hypothesis; unverified |\n| W +→ F | Waiting customers send more follow-ups | Customer response delay | Hypothesis; unverified |\n| F +→ L | Reading/responding adds work | Short | Hypothesis; unverified |\n| L −→ C | Follow-up handling consumes resolution time | Short | Hypothesis; unverified |\n| C −→ B | More effective capacity clears backlog | Processing delay | Hypothesis; unverified |\n\nClosed loop B→W→F→L→C→B is reinforcing: two negative links yield amplification. Confidence in dominance is unknown; inflow, ticket complexity and staffing responses may change behavior.\n\nLeverage hypothesis: accurate proactive status updates reduce follow-ups; added messaging could itself consume capacity. Test with waiting times, follow-ups per ticket, handling time and resolution rate, comparing similar periods/queues. Review after a bounded trial.",
+    "clarification_count": 0
+  },
+  {
+    "id": "boundary-review",
+    "selected_models": [
+      "After Action Review"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/after-action-review.md"
+    ],
+    "answer": "After Action Review fits learning from one completed launch, including possible successes.\n\n| Step | Content | Basis |\n|---|---|---|\n| Intended | On-time launch; expected ticket volume | Reconstructed from your comparison; retrieve original plan |\n| Actual | Launch finished yesterday, late; tickets below expectation | User-provided account; verify dates/counts |\n| Gap | Worse timing; fewer tickets, meaning uncertain | Comparison; sales/exposure unknown |\n| Why | Delay cause unknown. Low tickets could reflect quality, lower sales, or reporting lag | Competing hypotheses; none established |\n| Sustain | Provisionally preserve launch QA/support preparation while testing whether it contributed | Hypothesis; no specific successful practice verified |\n| Improve | Record planned dates, actual milestones, sales/exposure and tickets over equal windows | Measurement gap |\n\nLessons: compare ticket rates per exposed customer; track timing deviations against the original plan; repeat practices only when their contribution has support.\n\nNext action: proposed owner, launch lead, assembles the original plan, delay timeline and exposure-normalized ticket data before the next launch planning review. Review after equal observation windows mature. This may reveal learning to sustain without crediting low demand as improved quality.",
+    "clarification_count": 0
+  },
+  {
+    "id": "boundary-map",
+    "selected_models": [
+      "Concept Map"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/concept-map.md"
+    ],
+    "answer": "Concept Map fits meanings and labeled relationships.\n\nFocus: How do revenue, gross margin, fixed costs and profit relate in a simple business income statement?\n\nInventory: revenue = sales earned before expenses; direct costs/COGS = costs attributed to goods/services sold; gross profit = revenue less COGS; gross margin = gross profit divided by revenue; fixed costs = costs broadly stable within a relevant activity range; profit here = operating profit, under the simplified assumptions below.\n\nHierarchy: financial performance → revenue, costs, profit; costs → COGS and other operating costs. Gross profit is an intermediate subtotal; gross margin is a ratio.\n\n| Source | Linking phrase | Target | Confidence |\n|---|---|---|---|\n| Revenue minus COGS | equals | Gross profit | High, by definition |\n| Gross profit / revenue | equals | Gross margin | High; revenue must be nonzero |\n| Gross profit minus other operating costs | equals | Operating profit | High in simplified scope |\n| Fixed costs | may be included in | COGS or operating costs | Accounting-policy dependent |\n\nCross-link: fixed costs are not necessarily all subtracted after gross profit; avoid double-counting. Gaps: confirm whether 'margin' means percentage and 'profit' means operating or net profit; taxes/interest excluded here.",
+    "clarification_count": 0
+  },
+  {
+    "id": "logic-review",
+    "selected_models": [],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/overview.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/induction.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/fallacies.md"
+    ],
+    "answer": "Verdict: 1 error (1 critical, 0 contestable). Causation is not established.\n\nArgument structure: thesis—redesign caused increased signups; premise—signups increased after redesign; inference—inductive causal attribution.\n\n| # | Location | Error | Why it fails | Fix |\n|---|---|---|---|---|---|\n| 1 | “Therefore … caused” | False cause — post hoc ergo propter hoc | Temporal order alone cannot distinguish redesign from traffic changes, seasonality or concurrent activity | Test against a credible counterfactual/control and check competing explanations |\n\nHidden premises: signup measurement is comparable; the increase would not otherwise have occurred; other relevant conditions were stable. These are unstated and unsupported.\n\nFormal validity vs material truth: this is a non-deductive inference, so deductive validity is not the appropriate strength test. The reported sequence is user-provided, not independently verified; the causal conclusion remains unsupported even if that sequence is true. No contradiction or term shift is evident.\n\nInductive strength: weak from before/after timing alone. A randomized comparison or suitably controlled evidence could strengthen or overturn the attribution. Review mode: no rewrite.",
+    "clarification_count": 0
+  },
+  {
+    "id": "logic-fix",
+    "selected_models": [],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/overview.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/induction.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/fallacies.md"
+    ],
+    "answer": "Verdict: 1 error (1 critical, 0 contestable).\n\nArgument structure: premise—two beta users loved the feature; thesis—every customer will buy it; inference—generalization from a sample plus a behavioral prediction.\n\n| # | Location | Error | Why it fails | Fix |\n|---|---|---|---|---|---|\n| 1 | “so every customer will buy it” | Hasty generalization (taxonomy supplies no Latin name) | Two responses do not represent every customer; liking does not establish willingness to pay | Limit the claim and test purchase behavior |\n\nHidden premises: beta users represent all customers, and loving the feature guarantees purchase. Both are unsupported. No contradiction or shifting term is apparent, but preference and purchase are distinct outcomes.\n\nFormal validity vs material truth: this is inductive, not a deductive proof. The two reactions are user-provided and unverified; even if true, they weakly support a universal purchase prediction.\n\nRewrite: “Two beta users loved the feature. Whether customers will buy it remains untested.”\n\nChangelog: retained the observed enthusiasm; removed the unsupported universal prediction and separated liking from buying. Next evidence: purchases at the intended price from a relevant sample.",
+    "clarification_count": 0
+  },
+  {
+    "id": "logic-solve",
+    "selected_models": [],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/overview.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/formal-validity.md",
+      "/private/tmp/toolkit-routing-eval/baseline/logic/fallacies.md"
+    ],
+    "answer": "Verdict: 1 error (1 critical, 0 contestable). The form is invalid.\n\nArgument structure: premises P → Q and Q; conclusion P. This is a propositional deduction.\n\nTruth-table counterexample:\n\n| P | Q | P → Q | Premise Q | Conclusion P |\n|---|---|---|---|---|\n| False | True | True | True | False |\n\nBoth premises are true while the conclusion is false, so the inference is not truth-preserving.\n\n| # | Location | Error | Why it fails | Fix |\n|---|---|---|---|---|---|\n| 1 | Q, therefore P | Affirming the consequent (taxonomy supplies no Latin name) | Q can hold without P | An additional supported premise Q → P would license P |\n\nHidden premise: the converse Q → P would be needed; it was not supplied and cannot be assumed.\n\nConcrete counterexample: if it rains, the road is wet; the road is wet; therefore it rained. A sprinkler could wet it without rain.\n\nFormal validity vs material truth: invalid independently of whether a particular instance happens to have true statements. No material facts about P or Q were supplied.",
+    "clarification_count": 0
+  },
+  {
+    "id": "combination",
+    "selected_models": [
+      "Second-Order Thinking",
+      "Inversion"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/second-order-thinking.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/inversion.md"
+    ],
+    "answer": "Use Second-Order Thinking to compare consequences, then Inversion to stress-test the provisional pilot. Demand is unknown; no scores are justified. Baseline: defer both, avoiding exposure but gaining no demand evidence.\n\n| Horizon | Launch now | Small pilot | Stakeholder/mechanism; confidence; safeguard |\n|---|---|---|---|\n| Immediate | Broad spending/exposure, hard to reverse | Limited exposure, cheap to stop | Team/customers; given reversibility; cap pilot scope |\n| Medium | Weak demand could strand resources | Observed purchase/use could inform scale | Team; demand hypothesis unknown; measure paid demand |\n| Later | Commitments could lock in costs | Pilot may delay upside or misrepresent market | Business/customers; speculative; define scale criteria and review window |\n\nCarry forward: prefer pilot conditionally because it buys evidence with limited commitment. Weakest assumption: pilot is representative enough.\n\n| Failure | Mechanism | Severity/plausibility | Signal | Safeguard | Proposed owner |\n|---|---|---|---|---|---|\n| Misleading demand | Biased sample | High/unknown | Segment imbalance | Relevant sample, paid behavior | Research lead |\n| Pilot becomes launch | Scope creeps | High/unknown | Spending/commitments expand | Budget/time/commitment cap | Product owner |\n\nResidual risk: delayed opportunity. Stop at breached cap or harm; review at the pre-agreed pilot end. Demand and thresholds remain unknown; set them before starting.",
+    "clarification_count": 0
+  },
+  {
+    "id": "missing",
+    "selected_models": [
+      "Decision Matrix"
+    ],
+    "read_paths": [
+      "/private/tmp/toolkit-routing-eval/baseline/SKILL.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/catalog.md",
+      "/private/tmp/toolkit-routing-eval/baseline/references/decision-matrix.md"
+    ],
+    "answer": "Decision Matrix is requested, but a defensible choice cannot be scored yet. I will not invent vendors, prices or weights.\n\nPlease provide:\n1. The three vendors, decision owner/deadline, and whether keeping the current setup is an option.\n2. Non-negotiable requirements and constraints, including budget and implementation limits.\n3. Criteria, relative priorities, prices and available evidence for each vendor.\n\nStarting artifact:\n\n| Criterion | Definition | Weight | Vendor 1 | Vendor 2 | Vendor 3 | Evidence/uncertainty |\n|---|---|---|---|---|---|---|\n| To define | Higher means better; criterion-specific anchors needed | Unset | Unknown | Unknown | Unknown | No data supplied |\n| Weighted total | Not computable yet | — | — | — | — | — |\n\nFirst screen hard constraints; then agree distinct criteria and weights before scoring. Unknowns stay unknown, not zero. Compare a baseline where viable, verify weighted calculations, and vary uncertain scores/weights to test whether the leader changes.\n\nSelected option: none. Revisit when the inputs above are available; a numerical ranking now would hide missing evidence.",
+    "clarification_count": 3
+  },
+  {
+    "id": "ordinary",
+    "selected_models": [],
+    "read_paths": [],
+    "answer": "We’re preparing the report.",
+    "clarification_count": 0
+  }
+]

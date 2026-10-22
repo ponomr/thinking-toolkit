@@ -27,8 +27,8 @@ practitioners documented along the way.
 Three commitments shape the design:
 
 1. **Selection.** Knowing what a decision matrix is costs nothing; the
-   expensive mistake is reaching for one at the wrong moment. The catalog
-   encodes selection cues, contrast rules ("Five Whys for one causal chain,
+   expensive mistake is reaching for one at the wrong moment. The selection guides
+   encode selection cues, contrast rules ("Five Whys for one causal chain,
    Ishikawa for breadth, Connection Circles for feedback"), and anti-patterns
    for every model.
 2. **Procedure.** Each model ships as a full operational card: inputs,
@@ -44,18 +44,38 @@ Three commitments shape the design:
 
 When a model is named explicitly, the agent loads that card and follows it.
 When the toolkit is explicitly requested but the method is left open, it
-identifies the job, routes through the catalog's selection cues and contrast
-rules, and picks one primary model with at most two complements. Ordinary
+identifies the job, uses the selection entry and relevant category guide, and picks one primary model with at most two complements. Ordinary
 planning, analysis, problem-solving, and writing requests do not activate the
 toolkit automatically. Once invoked, it frames the situation, applies the
 card's procedure at an appropriate depth, tests material assumptions, and
 returns the requested artifact or action in a format suited to the request.
 
 The skill uses **progressive disclosure** to stay context-efficient: the agent
-first reads the concise `SKILL.md`, consults the routing catalog when selection
-is authorized or an explicit alias must be resolved, and loads *only* the model
-cards it actually needs.
-Thirty-one models cost nothing until one is used.
+reads `SKILL.md` and follows only the applicable route to the chosen card.
+The index and selection guides have a reading cost; unselected cards are not
+loaded by the prescribed route.
+
+## Selective Loading and Manual Use
+
+Named models and aliases use `references/catalog.md`, then one card. Automatic
+selection uses `references/selection.md`, one category guide, and the selected
+card. `/logic` goes directly to `logic/overview.md`. Combination recipes are
+loaded only for a needed sequence. The 31 cards and logic procedures are
+unchanged in the 1.2.0 development payload; released installation commands below
+still point to the last published version.
+
+Without file access, paste `SKILL.md` and provide the next file requested by the
+route. For a named model, provide the index and selected card; for automatic
+selection, provide the selector, relevant group and chosen card; for `/logic`,
+provide the overview and the focused references it requires. Keep file labels
+with pasted text. A sequence also needs `references/combinations.md`. Missing
+instructions should prompt a request for the file, not a claim of applying it.
+No separate all-in-one copy is maintained.
+
+Instruction footprint is measured by `scripts/measure_context.py`. It reports
+UTF-8 bytes, whitespace-delimited words and logical file reads, not billed
+tokens or latency. Behavioral comparisons and limits are in
+[the evaluation report](docs/evaluation/results.md).
 
 ## The Catalog
 
@@ -110,10 +130,9 @@ Thirty-one models cost nothing until one is used.
 | Situation-Behavior-Impact | Feedback must be specific and non-judgmental |
 | Minto Pyramid | A busy audience needs the conclusion first |
 
-Beyond single models, the catalog ships **combination recipes** — proven
+Beyond single models, an optional file holds **combination recipes** — example
 sequences such as *Consequential choice* (Hard Choice Model → Decision Matrix →
-Red Teaming) or *Root-cause investigation* (Pareto → Iceberg → Ishikawa → Five
-Whys → OODA) — plus guardrails against the classic failure of stacking models
+Red Teaming) or *Root-cause investigation* (choose the necessary phases) — plus guardrails against the classic failure of stacking models
 to appear thorough.
 
 ## Logic analysis (`/logic`)
@@ -250,7 +269,10 @@ thinking-toolkit/
 ├── SKILL.md                  # entry point: contract, routing, workflow
 ├── VERSION                   # installed and release version
 ├── references/
-│   ├── catalog.md            # index, aliases, selection cues, recipes
+│   ├── catalog.md            # names, aliases, card paths
+│   ├── selection.md          # task router + category guides
+│   ├── selection/            # focused contrast rules
+│   ├── combinations.md       # optional sequence recipes
 │   └── <model>.md            # 31 operational cards, one per model
 ├── logic/                    # /logic procedure and focused references
 ├── agents/openai.yaml        # optional host discovery metadata

@@ -1,0 +1,141 @@
+[
+  {
+    "id": "named",
+    "prompt": "Use Issue Trees to investigate why trial conversion fell. We only know that the drop started last month; no segment data is available.",
+    "expected_models": [
+      "Issue Trees"
+    ],
+    "acceptance": [
+      "root question and bounded tree",
+      "testable leaves and missing evidence",
+      "no invented segment measurements"
+    ]
+  },
+  {
+    "id": "alias",
+    "prompt": "Run a premortem on a customer-data migration planned for Friday. Backup restoration and rollback have not been tested.",
+    "expected_models": [
+      "Inversion"
+    ],
+    "acceptance": [
+      "failure mechanisms",
+      "safeguards, owners or proposed ownership",
+      "residual risk and review"
+    ]
+  },
+  {
+    "id": "select-priority",
+    "prompt": "Thinking Toolkit: choose one method to prioritize these tasks this week: a customer outage now, strategy work due next month, an optional meeting tomorrow.",
+    "expected_models": [
+      "Eisenhower Matrix"
+    ],
+    "acceptance": [
+      "urgency versus importance",
+      "action by task",
+      "capacity or recurrence check"
+    ]
+  },
+  {
+    "id": "select-system",
+    "prompt": "Thinking Toolkit: map how a growing support backlog increases waiting, waiting increases follow-up messages, and follow-ups consume capacity and increase backlog. Treat the mechanisms as hypotheses.",
+    "expected_models": [
+      "Connection Circles"
+    ],
+    "acceptance": [
+      "defined changing variables",
+      "causal polarities and closed loop",
+      "hypothesis labels and test"
+    ]
+  },
+  {
+    "id": "boundary-review",
+    "prompt": "Thinking Toolkit: we finished a launch yesterday. It was late but support tickets were lower than expected. Help us learn what to repeat and change. We do not know whether low tickets reflect better quality or lower sales.",
+    "expected_models": [
+      "After Action Review"
+    ],
+    "acceptance": [
+      "intended versus actual and gaps",
+      "competing quality/sales explanation",
+      "sustain, improve, next action and review"
+    ]
+  },
+  {
+    "id": "boundary-map",
+    "prompt": "Thinking Toolkit: organize the meanings and relationships of revenue, gross margin, fixed costs, and profit for a new colleague. I want a knowledge map, not a causal simulation.",
+    "expected_models": [
+      "Concept Map"
+    ],
+    "acceptance": [
+      "focus question",
+      "concept-link-concept propositions",
+      "knowledge gaps not a causal simulation"
+    ]
+  },
+  {
+    "id": "logic-review",
+    "prompt": "/logic review: After our redesign, signups increased. Therefore the redesign caused the increase.",
+    "expected_models": [
+      "/logic review"
+    ],
+    "acceptance": [
+      "causal inference not established",
+      "validity separated from premise truth",
+      "review only, no rewrite"
+    ]
+  },
+  {
+    "id": "logic-fix",
+    "prompt": "/logic fix: Two beta users loved the feature, so every customer will buy it. Preserve the author's concise voice.",
+    "expected_models": [
+      "/logic fix"
+    ],
+    "acceptance": [
+      "sample does not support universality",
+      "minimal rewrite preserving uncertainty",
+      "change explanation"
+    ]
+  },
+  {
+    "id": "logic-solve",
+    "prompt": "/logic solve: If P then Q. Q. Therefore P. Is this form valid? Show a counterexample if needed.",
+    "expected_models": [
+      "/logic solve"
+    ],
+    "acceptance": [
+      "affirming consequent",
+      "countermodel P false Q true",
+      "truth of premises versus invalid form"
+    ]
+  },
+  {
+    "id": "combination",
+    "prompt": "Thinking Toolkit: use no more than two complementary methods to compare launching now versus a small pilot. We lack demand data. A broad launch is expensive to reverse; a pilot is cheap. Make uncertainty visible and stress-test your provisional choice.",
+    "expected_models": [],
+    "acceptance": [
+      "at most two distinct complementary methods",
+      "visible artifact handoff",
+      "no invented demand scores",
+      "provisional conclusion and review"
+    ]
+  },
+  {
+    "id": "missing",
+    "prompt": "Use Decision Matrix to choose which of our three vendors to buy. I have not supplied vendor names, criteria, prices, or constraints.",
+    "expected_models": [
+      "Decision Matrix"
+    ],
+    "acceptance": [
+      "focused questions or explicitly incomplete template",
+      "no fabricated vendor data or winner"
+    ]
+  },
+  {
+    "id": "ordinary",
+    "prompt": "Rewrite this sentence more briefly: We are currently in the process of preparing the report.",
+    "expected_models": [],
+    "acceptance": [
+      "concise rewritten sentence",
+      "no toolkit activation or method narration"
+    ]
+  }
+]

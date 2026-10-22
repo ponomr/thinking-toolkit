@@ -60,6 +60,14 @@ EXPECTED_MODELS = {
     "minto-pyramid.md": ("Minto Pyramid", "Communication"),
 }
 
+ROUTING_GUIDES = {
+    "Decision making": "selection/decision-making.md",
+    "Problem solving": "selection/problem-solving.md",
+    "Systems thinking": "selection/systems-thinking.md",
+    "Communication": "selection/communication.md",
+}
+ROUTING_FILES = ("selection.md", "combinations.md", *ROUTING_GUIDES.values())
+
 REQUIRED_SECTIONS = (
     "Purpose",
     "Use When",
@@ -148,7 +156,8 @@ def validate_model_cards(root: Path) -> list[str]:
     errors: list[str] = []
     references = root / "references"
     actual_cards = {
-        path.name for path in references.glob("*.md") if path.name != "catalog.md"
+        path.name for path in references.glob("*.md")
+        if path.name not in {"catalog.md", *ROUTING_FILES}
     }
     expected_cards = set(EXPECTED_MODELS)
 
@@ -207,6 +216,53 @@ def validate_model_cards(root: Path) -> list[str]:
                 f"manifest category {category!r} has {count} cards; "
                 f"expected {expected_count}"
             )
+    return errors
+
+
+def validate_routing(root: Path) -> list[str]:
+    errors: list[str] = []
+    references = root / "references"
+    for filename in ROUTING_FILES:
+        if not (references / filename).is_file():
+            errors.append(f"missing routing file: references/{filename}")
+    if errors:
+        return errors
+
+    skill = (root / "SKILL.md").read_text(encoding="utf-8")
+    for filename in ("selection.md", "combinations.md"):
+        if f"(references/{filename})" not in skill:
+            errors.append(f"SKILL.md does not link to routing file: {filename}")
+    selector = (references / "selection.md").read_text(encoding="utf-8")
+    for filename in ROUTING_GUIDES.values():
+        if f"({filename})" not in selector:
+            errors.append(f"selection.md does not link to {filename}")
+
+    catalog = (references / "catalog.md").read_text(encoding="utf-8")
+    seen: dict[str, str] = {}
+    indexed: list[str] = []
+    for title, filename, aliases in re.findall(
+        r"^\| \[([^]]+)\]\(([^)]+)\) \| ([^|]+) \|$", catalog, re.MULTILINE
+    ):
+        indexed.append(filename)
+        if filename not in EXPECTED_MODELS:
+            errors.append(f"unexpected indexed model: {filename}")
+        elif title != EXPECTED_MODELS[filename][0]:
+            errors.append(f"unexpected indexed title: {title}")
+        for alias in [title, *aliases.split(",")]:
+            key = " ".join(alias.casefold().split())
+            if key in seen and seen[key] != filename:
+                errors.append(f"alias collision: {alias.strip()}")
+            seen[key] = filename
+    guides = {
+        category: (references / path).read_text(encoding="utf-8")
+        for category, path in ROUTING_GUIDES.items()
+    }
+    for filename, (_, category) in EXPECTED_MODELS.items():
+        if indexed.count(filename) != 1:
+            errors.append(f"index must contain exactly one row for {filename}")
+        guide = guides[category]
+        if f"(../{filename})" not in guide:
+            errors.append(f"selection guide does not link to {filename}")
     return errors
 
 
@@ -277,14 +333,7 @@ def validate_project_text(root: Path, forbidden_terms: list[str]) -> list[str]:
 
 
 def validate_logic_module(root: Path) -> list[str]:
-    """Validate the /logic analysis module.
-
-    The generic passes (validate_links, validate_project_text) already enforce
-    internal-links-only, no external URLs, no Cyrillic, and no placeholders on
-    logic/*.md via rglob. This function adds the module-specific invariants:
-    the expected files exist and are non-empty, SKILL.md links each of them, and
-    SKILL.md documents the three modes.
-    """
+    """Validate the /logic analysis module."""
     errors: list[str] = []
     logic_dir = root / "logic"
     skill_text = (root / "SKILL.md").read_text(encoding="utf-8")
@@ -296,8 +345,12 @@ def validate_logic_module(root: Path) -> list[str]:
             continue
         if not path.read_text(encoding="utf-8").strip():
             errors.append(f"logic/{filename} is empty")
-        if f"logic/{filename}" not in skill_text:
-            errors.append(f"SKILL.md does not link to logic/{filename}")
+        entry = skill_text if filename == "overview.md" else (
+            logic_dir / "overview.md"
+        ).read_text(encoding="utf-8")
+        target = "logic/overview.md" if filename == "overview.md" else filename
+        if f"({target})" not in entry:
+            errors.append(f"logic routing does not link to {filename}")
 
     # Reject stray files so the module stays lean and the manifest stays honest.
     if logic_dir.exists():
@@ -363,6 +416,7 @@ def validate_project(root: Path, forbidden_terms: list[str] | None = None) -> li
     errors.extend(validate_frontmatter(root / "SKILL.md"))
     errors.extend(validate_agent_metadata(root / "agents" / "openai.yaml"))
     errors.extend(validate_model_cards(root))
+    errors.extend(validate_routing(root))
     errors.extend(validate_logic_module(root))
     errors.extend(validate_distribution(root))
     errors.extend(validate_links(root))

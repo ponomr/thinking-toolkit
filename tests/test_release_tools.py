@@ -46,6 +46,18 @@ class ReleaseBuilderTests(unittest.TestCase):
             self.assertFalse(any("tests/" in name for name in names))
             self.assertFalse(any("scripts/" in name for name in names))
 
+    def test_clean_install_preserves_nested_payload(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = Path(temporary)
+            subprocess.run(["bash", str(PROJECT_ROOT / "install.sh"), str(destination)],
+                           check=True, capture_output=True, text=True)
+            target = destination / "thinking-toolkit"
+            for source in (PROJECT_ROOT / "references").rglob("*.md"):
+                relative = source.relative_to(PROJECT_ROOT)
+                self.assertEqual((target / relative).read_bytes(), source.read_bytes())
+            self.assertFalse((target / "docs").exists())
+            self.assertFalse((target / "scripts").exists())
+
     def test_checksum_matches_archive(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             archive, checksums = BUILDER.build_archive(Path(temporary))
@@ -138,6 +150,14 @@ class UpdaterTests(unittest.TestCase):
             self.assertEqual(
                 {path.name for path in target.iterdir()}, set(installed_payload)
             )
+            for item in installed_payload:
+                source = PROJECT_ROOT / item
+                files = source.rglob("*") if source.is_dir() else [source]
+                for path in files:
+                    if path.is_file():
+                        relative = path.relative_to(PROJECT_ROOT)
+                        self.assertEqual((target / relative).read_bytes(), path.read_bytes())
+            self.assertTrue((target / "references/selection/systems-thinking.md").is_file())
             backup_line = next(
                 line for line in updated.stdout.splitlines() if line.startswith("backup: ")
             )
