@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "answer": "Please provide references/catalog.md so I can locate the Issue Trees card; then I\u2019ll need that card to apply the toolkit procedure to falling trial conversion.",
+    "requested_file": "references/catalog.md",
+    "falsely_claimed_applied": false
+  },
+  {
+    "id": 2,
+    "answer": "Please provide references/selection.md so I can choose the appropriate method for prioritizing tasks and identify the next required instructions.",
+    "requested_file": "references/selection.md",
+    "falsely_claimed_applied": false
+  },
+  {
+    "id": 3,
+    "answer": "Please provide logic/overview.md so I can follow the toolkit\u2019s /logic review procedure for this argument.",
+    "requested_file": "logic/overview.md",
+    "falsely_claimed_applied": false
+  }
+]

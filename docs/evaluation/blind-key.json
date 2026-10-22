@@ -1,0 +1,50 @@
+{
+  "named": {
+    "A": "new",
+    "B": "old"
+  },
+  "alias": {
+    "A": "old",
+    "B": "new"
+  },
+  "select-priority": {
+    "A": "old",
+    "B": "new"
+  },
+  "select-system": {
+    "A": "old",
+    "B": "new"
+  },
+  "boundary-review": {
+    "A": "old",
+    "B": "new"
+  },
+  "boundary-map": {
+    "A": "new",
+    "B": "old"
+  },
+  "logic-review": {
+    "A": "new",
+    "B": "old"
+  },
+  "logic-fix": {
+    "A": "old",
+    "B": "new"
+  },
+  "logic-solve": {
+    "A": "new",
+    "B": "old"
+  },
+  "combination": {
+    "A": "old",
+    "B": "new"
+  },
+  "missing": {
+    "A": "new",
+    "B": "old"
+  },
+  "ordinary": {
+    "A": "old",
+    "B": "new"
+  }
+}

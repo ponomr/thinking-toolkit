@@ -74,6 +74,7 @@ install_to() {
   done
   echo "copied   -> $dest"
   [ -n "$backup" ] && echo "backup   -> $backup"
+  return 0
 }
 
 case "$TARGET" in

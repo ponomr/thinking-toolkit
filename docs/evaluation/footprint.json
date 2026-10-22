@@ -1,0 +1,1256 @@
+{
+  "metric": "static UTF-8 bytes, whitespace words, logical file reads",
+  "limitations": "No model usage tokens, latency, retries, cache accounting or quality inferred.",
+  "changed_cards_or_logic": [],
+  "routes": [
+    {
+      "model": "Six Thinking Hats",
+      "mode": "named",
+      "before": {
+        "words": 3188,
+        "bytes": 21855,
+        "reads": 3
+      },
+      "after": {
+        "words": 1450,
+        "bytes": 10589,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/six-thinking-hats.md"
+      ]
+    },
+    {
+      "model": "Six Thinking Hats",
+      "mode": "automatic",
+      "before": {
+        "words": 3188,
+        "bytes": 21855,
+        "reads": 3
+      },
+      "after": {
+        "words": 1499,
+        "bytes": 10725,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/six-thinking-hats.md"
+      ]
+    },
+    {
+      "model": "Eisenhower Matrix",
+      "mode": "named",
+      "before": {
+        "words": 3140,
+        "bytes": 21453,
+        "reads": 3
+      },
+      "after": {
+        "words": 1402,
+        "bytes": 10187,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/eisenhower-matrix.md"
+      ]
+    },
+    {
+      "model": "Eisenhower Matrix",
+      "mode": "automatic",
+      "before": {
+        "words": 3140,
+        "bytes": 21453,
+        "reads": 3
+      },
+      "after": {
+        "words": 1451,
+        "bytes": 10323,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/eisenhower-matrix.md"
+      ]
+    },
+    {
+      "model": "Second-Order Thinking",
+      "mode": "named",
+      "before": {
+        "words": 3132,
+        "bytes": 21592,
+        "reads": 3
+      },
+      "after": {
+        "words": 1394,
+        "bytes": 10326,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/second-order-thinking.md"
+      ]
+    },
+    {
+      "model": "Second-Order Thinking",
+      "mode": "automatic",
+      "before": {
+        "words": 3132,
+        "bytes": 21592,
+        "reads": 3
+      },
+      "after": {
+        "words": 1443,
+        "bytes": 10462,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/second-order-thinking.md"
+      ]
+    },
+    {
+      "model": "Decision Matrix",
+      "mode": "named",
+      "before": {
+        "words": 3155,
+        "bytes": 21687,
+        "reads": 3
+      },
+      "after": {
+        "words": 1417,
+        "bytes": 10421,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/decision-matrix.md"
+      ]
+    },
+    {
+      "model": "Decision Matrix",
+      "mode": "automatic",
+      "before": {
+        "words": 3155,
+        "bytes": 21687,
+        "reads": 3
+      },
+      "after": {
+        "words": 1466,
+        "bytes": 10557,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/decision-matrix.md"
+      ]
+    },
+    {
+      "model": "Impact-Effort Matrix",
+      "mode": "named",
+      "before": {
+        "words": 3126,
+        "bytes": 21447,
+        "reads": 3
+      },
+      "after": {
+        "words": 1388,
+        "bytes": 10181,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/impact-effort-matrix.md"
+      ]
+    },
+    {
+      "model": "Impact-Effort Matrix",
+      "mode": "automatic",
+      "before": {
+        "words": 3126,
+        "bytes": 21447,
+        "reads": 3
+      },
+      "after": {
+        "words": 1437,
+        "bytes": 10317,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/impact-effort-matrix.md"
+      ]
+    },
+    {
+      "model": "Ladder of Inference",
+      "mode": "named",
+      "before": {
+        "words": 3197,
+        "bytes": 21967,
+        "reads": 3
+      },
+      "after": {
+        "words": 1459,
+        "bytes": 10701,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/ladder-of-inference.md"
+      ]
+    },
+    {
+      "model": "Ladder of Inference",
+      "mode": "automatic",
+      "before": {
+        "words": 3197,
+        "bytes": 21967,
+        "reads": 3
+      },
+      "after": {
+        "words": 1508,
+        "bytes": 10837,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/ladder-of-inference.md"
+      ]
+    },
+    {
+      "model": "Hard Choice Model",
+      "mode": "named",
+      "before": {
+        "words": 3155,
+        "bytes": 21650,
+        "reads": 3
+      },
+      "after": {
+        "words": 1417,
+        "bytes": 10384,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/hard-choice-model.md"
+      ]
+    },
+    {
+      "model": "Hard Choice Model",
+      "mode": "automatic",
+      "before": {
+        "words": 3155,
+        "bytes": 21650,
+        "reads": 3
+      },
+      "after": {
+        "words": 1466,
+        "bytes": 10520,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/hard-choice-model.md"
+      ]
+    },
+    {
+      "model": "OODA Loop",
+      "mode": "named",
+      "before": {
+        "words": 3104,
+        "bytes": 21506,
+        "reads": 3
+      },
+      "after": {
+        "words": 1366,
+        "bytes": 10240,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/ooda-loop.md"
+      ]
+    },
+    {
+      "model": "OODA Loop",
+      "mode": "automatic",
+      "before": {
+        "words": 3104,
+        "bytes": 21506,
+        "reads": 3
+      },
+      "after": {
+        "words": 1415,
+        "bytes": 10376,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/ooda-loop.md"
+      ]
+    },
+    {
+      "model": "Cynefin Framework",
+      "mode": "named",
+      "before": {
+        "words": 3133,
+        "bytes": 21645,
+        "reads": 3
+      },
+      "after": {
+        "words": 1395,
+        "bytes": 10379,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/cynefin-framework.md"
+      ]
+    },
+    {
+      "model": "Cynefin Framework",
+      "mode": "automatic",
+      "before": {
+        "words": 3133,
+        "bytes": 21645,
+        "reads": 3
+      },
+      "after": {
+        "words": 1444,
+        "bytes": 10515,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/cynefin-framework.md"
+      ]
+    },
+    {
+      "model": "Confidence Determines Speed vs. Quality",
+      "mode": "named",
+      "before": {
+        "words": 3145,
+        "bytes": 21833,
+        "reads": 3
+      },
+      "after": {
+        "words": 1407,
+        "bytes": 10567,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/confidence-speed-quality.md"
+      ]
+    },
+    {
+      "model": "Confidence Determines Speed vs. Quality",
+      "mode": "automatic",
+      "before": {
+        "words": 3145,
+        "bytes": 21833,
+        "reads": 3
+      },
+      "after": {
+        "words": 1456,
+        "bytes": 10703,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/confidence-speed-quality.md"
+      ]
+    },
+    {
+      "model": "Pareto Analysis",
+      "mode": "named",
+      "before": {
+        "words": 3277,
+        "bytes": 22447,
+        "reads": 3
+      },
+      "after": {
+        "words": 1539,
+        "bytes": 11181,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/pareto-analysis.md"
+      ]
+    },
+    {
+      "model": "Pareto Analysis",
+      "mode": "automatic",
+      "before": {
+        "words": 3277,
+        "bytes": 22447,
+        "reads": 3
+      },
+      "after": {
+        "words": 1588,
+        "bytes": 11317,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/pareto-analysis.md"
+      ]
+    },
+    {
+      "model": "Backcasting",
+      "mode": "named",
+      "before": {
+        "words": 3370,
+        "bytes": 22978,
+        "reads": 3
+      },
+      "after": {
+        "words": 1632,
+        "bytes": 11712,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/backcasting.md"
+      ]
+    },
+    {
+      "model": "Backcasting",
+      "mode": "automatic",
+      "before": {
+        "words": 3370,
+        "bytes": 22978,
+        "reads": 3
+      },
+      "after": {
+        "words": 1681,
+        "bytes": 11848,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/decision-making.md",
+        "references/backcasting.md"
+      ]
+    },
+    {
+      "model": "Ishikawa Diagram",
+      "mode": "named",
+      "before": {
+        "words": 3167,
+        "bytes": 21853,
+        "reads": 3
+      },
+      "after": {
+        "words": 1429,
+        "bytes": 10587,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/ishikawa-diagram.md"
+      ]
+    },
+    {
+      "model": "Ishikawa Diagram",
+      "mode": "automatic",
+      "before": {
+        "words": 3167,
+        "bytes": 21853,
+        "reads": 3
+      },
+      "after": {
+        "words": 1511,
+        "bytes": 10929,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/ishikawa-diagram.md"
+      ]
+    },
+    {
+      "model": "Five Whys",
+      "mode": "named",
+      "before": {
+        "words": 3266,
+        "bytes": 22256,
+        "reads": 3
+      },
+      "after": {
+        "words": 1528,
+        "bytes": 10990,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/five-whys.md"
+      ]
+    },
+    {
+      "model": "Five Whys",
+      "mode": "automatic",
+      "before": {
+        "words": 3266,
+        "bytes": 22256,
+        "reads": 3
+      },
+      "after": {
+        "words": 1610,
+        "bytes": 11332,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/five-whys.md"
+      ]
+    },
+    {
+      "model": "Fermi Estimation",
+      "mode": "named",
+      "before": {
+        "words": 3310,
+        "bytes": 22541,
+        "reads": 3
+      },
+      "after": {
+        "words": 1572,
+        "bytes": 11275,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/fermi-estimation.md"
+      ]
+    },
+    {
+      "model": "Fermi Estimation",
+      "mode": "automatic",
+      "before": {
+        "words": 3310,
+        "bytes": 22541,
+        "reads": 3
+      },
+      "after": {
+        "words": 1654,
+        "bytes": 11617,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/fermi-estimation.md"
+      ]
+    },
+    {
+      "model": "Red Teaming",
+      "mode": "named",
+      "before": {
+        "words": 3339,
+        "bytes": 22893,
+        "reads": 3
+      },
+      "after": {
+        "words": 1601,
+        "bytes": 11627,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/red-teaming.md"
+      ]
+    },
+    {
+      "model": "Red Teaming",
+      "mode": "automatic",
+      "before": {
+        "words": 3339,
+        "bytes": 22893,
+        "reads": 3
+      },
+      "after": {
+        "words": 1683,
+        "bytes": 11969,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/red-teaming.md"
+      ]
+    },
+    {
+      "model": "Abstraction Laddering",
+      "mode": "named",
+      "before": {
+        "words": 3157,
+        "bytes": 21662,
+        "reads": 3
+      },
+      "after": {
+        "words": 1419,
+        "bytes": 10396,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/abstraction-laddering.md"
+      ]
+    },
+    {
+      "model": "Abstraction Laddering",
+      "mode": "automatic",
+      "before": {
+        "words": 3157,
+        "bytes": 21662,
+        "reads": 3
+      },
+      "after": {
+        "words": 1501,
+        "bytes": 10738,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/abstraction-laddering.md"
+      ]
+    },
+    {
+      "model": "Conflict Resolution Diagram",
+      "mode": "named",
+      "before": {
+        "words": 3213,
+        "bytes": 22005,
+        "reads": 3
+      },
+      "after": {
+        "words": 1475,
+        "bytes": 10739,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/conflict-resolution-diagram.md"
+      ]
+    },
+    {
+      "model": "Conflict Resolution Diagram",
+      "mode": "automatic",
+      "before": {
+        "words": 3213,
+        "bytes": 22005,
+        "reads": 3
+      },
+      "after": {
+        "words": 1557,
+        "bytes": 11081,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/conflict-resolution-diagram.md"
+      ]
+    },
+    {
+      "model": "Zwicky Box",
+      "mode": "named",
+      "before": {
+        "words": 3113,
+        "bytes": 21587,
+        "reads": 3
+      },
+      "after": {
+        "words": 1375,
+        "bytes": 10321,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/zwicky-box.md"
+      ]
+    },
+    {
+      "model": "Zwicky Box",
+      "mode": "automatic",
+      "before": {
+        "words": 3113,
+        "bytes": 21587,
+        "reads": 3
+      },
+      "after": {
+        "words": 1457,
+        "bytes": 10663,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/zwicky-box.md"
+      ]
+    },
+    {
+      "model": "Productive Thinking Model",
+      "mode": "named",
+      "before": {
+        "words": 3159,
+        "bytes": 21781,
+        "reads": 3
+      },
+      "after": {
+        "words": 1421,
+        "bytes": 10515,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/productive-thinking-model.md"
+      ]
+    },
+    {
+      "model": "Productive Thinking Model",
+      "mode": "automatic",
+      "before": {
+        "words": 3159,
+        "bytes": 21781,
+        "reads": 3
+      },
+      "after": {
+        "words": 1503,
+        "bytes": 10857,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/productive-thinking-model.md"
+      ]
+    },
+    {
+      "model": "Inversion",
+      "mode": "named",
+      "before": {
+        "words": 3108,
+        "bytes": 21371,
+        "reads": 3
+      },
+      "after": {
+        "words": 1370,
+        "bytes": 10105,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/inversion.md"
+      ]
+    },
+    {
+      "model": "Inversion",
+      "mode": "automatic",
+      "before": {
+        "words": 3108,
+        "bytes": 21371,
+        "reads": 3
+      },
+      "after": {
+        "words": 1452,
+        "bytes": 10447,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/inversion.md"
+      ]
+    },
+    {
+      "model": "Issue Trees",
+      "mode": "named",
+      "before": {
+        "words": 3162,
+        "bytes": 21650,
+        "reads": 3
+      },
+      "after": {
+        "words": 1424,
+        "bytes": 10384,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/issue-trees.md"
+      ]
+    },
+    {
+      "model": "Issue Trees",
+      "mode": "automatic",
+      "before": {
+        "words": 3162,
+        "bytes": 21650,
+        "reads": 3
+      },
+      "after": {
+        "words": 1506,
+        "bytes": 10726,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/issue-trees.md"
+      ]
+    },
+    {
+      "model": "First Principles",
+      "mode": "named",
+      "before": {
+        "words": 3102,
+        "bytes": 21619,
+        "reads": 3
+      },
+      "after": {
+        "words": 1364,
+        "bytes": 10353,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/first-principles.md"
+      ]
+    },
+    {
+      "model": "First Principles",
+      "mode": "automatic",
+      "before": {
+        "words": 3102,
+        "bytes": 21619,
+        "reads": 3
+      },
+      "after": {
+        "words": 1446,
+        "bytes": 10695,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/first-principles.md"
+      ]
+    },
+    {
+      "model": "After Action Review",
+      "mode": "named",
+      "before": {
+        "words": 3432,
+        "bytes": 23127,
+        "reads": 3
+      },
+      "after": {
+        "words": 1694,
+        "bytes": 11861,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/after-action-review.md"
+      ]
+    },
+    {
+      "model": "After Action Review",
+      "mode": "automatic",
+      "before": {
+        "words": 3432,
+        "bytes": 23127,
+        "reads": 3
+      },
+      "after": {
+        "words": 1776,
+        "bytes": 12203,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/problem-solving.md",
+        "references/after-action-review.md"
+      ]
+    },
+    {
+      "model": "Iceberg Model",
+      "mode": "named",
+      "before": {
+        "words": 3154,
+        "bytes": 21768,
+        "reads": 3
+      },
+      "after": {
+        "words": 1416,
+        "bytes": 10502,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/iceberg-model.md"
+      ]
+    },
+    {
+      "model": "Iceberg Model",
+      "mode": "automatic",
+      "before": {
+        "words": 3154,
+        "bytes": 21768,
+        "reads": 3
+      },
+      "after": {
+        "words": 1378,
+        "bytes": 9915,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/systems-thinking.md",
+        "references/iceberg-model.md"
+      ]
+    },
+    {
+      "model": "Connection Circles",
+      "mode": "named",
+      "before": {
+        "words": 3179,
+        "bytes": 21781,
+        "reads": 3
+      },
+      "after": {
+        "words": 1441,
+        "bytes": 10515,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/connection-circles.md"
+      ]
+    },
+    {
+      "model": "Connection Circles",
+      "mode": "automatic",
+      "before": {
+        "words": 3179,
+        "bytes": 21781,
+        "reads": 3
+      },
+      "after": {
+        "words": 1403,
+        "bytes": 9928,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/systems-thinking.md",
+        "references/connection-circles.md"
+      ]
+    },
+    {
+      "model": "Concept Map",
+      "mode": "named",
+      "before": {
+        "words": 3149,
+        "bytes": 21811,
+        "reads": 3
+      },
+      "after": {
+        "words": 1411,
+        "bytes": 10545,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/concept-map.md"
+      ]
+    },
+    {
+      "model": "Concept Map",
+      "mode": "automatic",
+      "before": {
+        "words": 3149,
+        "bytes": 21811,
+        "reads": 3
+      },
+      "after": {
+        "words": 1373,
+        "bytes": 9958,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/systems-thinking.md",
+        "references/concept-map.md"
+      ]
+    },
+    {
+      "model": "Balancing Feedback Loop",
+      "mode": "named",
+      "before": {
+        "words": 3124,
+        "bytes": 21507,
+        "reads": 3
+      },
+      "after": {
+        "words": 1386,
+        "bytes": 10241,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/balancing-feedback-loop.md"
+      ]
+    },
+    {
+      "model": "Balancing Feedback Loop",
+      "mode": "automatic",
+      "before": {
+        "words": 3124,
+        "bytes": 21507,
+        "reads": 3
+      },
+      "after": {
+        "words": 1348,
+        "bytes": 9654,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/systems-thinking.md",
+        "references/balancing-feedback-loop.md"
+      ]
+    },
+    {
+      "model": "Reinforcing Feedback Loop",
+      "mode": "named",
+      "before": {
+        "words": 3133,
+        "bytes": 21685,
+        "reads": 3
+      },
+      "after": {
+        "words": 1395,
+        "bytes": 10419,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/reinforcing-feedback-loop.md"
+      ]
+    },
+    {
+      "model": "Reinforcing Feedback Loop",
+      "mode": "automatic",
+      "before": {
+        "words": 3133,
+        "bytes": 21685,
+        "reads": 3
+      },
+      "after": {
+        "words": 1357,
+        "bytes": 9832,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/systems-thinking.md",
+        "references/reinforcing-feedback-loop.md"
+      ]
+    },
+    {
+      "model": "Situation-Behavior-Impact",
+      "mode": "named",
+      "before": {
+        "words": 3126,
+        "bytes": 21482,
+        "reads": 3
+      },
+      "after": {
+        "words": 1388,
+        "bytes": 10216,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/situation-behavior-impact.md"
+      ]
+    },
+    {
+      "model": "Situation-Behavior-Impact",
+      "mode": "automatic",
+      "before": {
+        "words": 3126,
+        "bytes": 21482,
+        "reads": 3
+      },
+      "after": {
+        "words": 1288,
+        "bytes": 9147,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/communication.md",
+        "references/situation-behavior-impact.md"
+      ]
+    },
+    {
+      "model": "Minto Pyramid",
+      "mode": "named",
+      "before": {
+        "words": 3186,
+        "bytes": 21999,
+        "reads": 3
+      },
+      "after": {
+        "words": 1448,
+        "bytes": 10733,
+        "reads": 3
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/catalog.md",
+        "references/minto-pyramid.md"
+      ]
+    },
+    {
+      "model": "Minto Pyramid",
+      "mode": "automatic",
+      "before": {
+        "words": 3186,
+        "bytes": 21999,
+        "reads": 3
+      },
+      "after": {
+        "words": 1348,
+        "bytes": 9664,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "references/selection.md",
+        "references/selection/communication.md",
+        "references/minto-pyramid.md"
+      ]
+    },
+    {
+      "model": "/logic with formal-validity.md",
+      "mode": "logic",
+      "before": {
+        "words": 3761,
+        "bytes": 24511,
+        "reads": 4
+      },
+      "after": {
+        "words": 3242,
+        "bytes": 21207,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "logic/overview.md",
+        "logic/formal-validity.md",
+        "logic/fallacies.md"
+      ]
+    },
+    {
+      "model": "/logic with induction.md",
+      "mode": "logic",
+      "before": {
+        "words": 3504,
+        "bytes": 23532,
+        "reads": 4
+      },
+      "after": {
+        "words": 2985,
+        "bytes": 20228,
+        "reads": 4
+      },
+      "after_paths": [
+        "SKILL.md",
+        "logic/overview.md",
+        "logic/induction.md",
+        "logic/fallacies.md"
+      ]
+    }
+  ]
+}

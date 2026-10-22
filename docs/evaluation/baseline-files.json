@@ -1,0 +1,187 @@
+{
+  "SKILL.md": {
+    "sha256": "895b6102a4cadae9d90a88ee08894290c688104f24afa535def05e3aa18b3e7b",
+    "words": 934,
+    "bytes": 6392
+  },
+  "references/after-action-review.md": {
+    "sha256": "e2c51c974e44f5476b85e87246e5f8983173d64dfb9c7966a2e62a70b718d053",
+    "words": 888,
+    "bytes": 5500
+  },
+  "references/first-principles.md": {
+    "sha256": "17c0ace69938852b494be491912ef0812d04d8f78e2180eae61612affe4e768c",
+    "words": 558,
+    "bytes": 3992
+  },
+  "references/red-teaming.md": {
+    "sha256": "2b7c8d899099127e16c4a7f1ae5b6162239332bfe89bede650c08903cac1f987",
+    "words": 795,
+    "bytes": 5266
+  },
+  "references/abstraction-laddering.md": {
+    "sha256": "173f128f970e80a8fb2474667823b7a6603b04d21bbdf53e99523d23c45679ce",
+    "words": 613,
+    "bytes": 4035
+  },
+  "references/fermi-estimation.md": {
+    "sha256": "32cd63d6069990dc8eb8cf2bf6fc64ec47d1fdb5a6a772d42d5f8252df328a3f",
+    "words": 766,
+    "bytes": 4914
+  },
+  "references/six-thinking-hats.md": {
+    "sha256": "786c142214a785feac6ddbd3d58556655f03c5856c35727d81ea6dfbf5f1fbb1",
+    "words": 644,
+    "bytes": 4228
+  },
+  "references/zwicky-box.md": {
+    "sha256": "d7cc17ca5004e014bf0cdba0772394c999178e9c09ded83bcebfba212c4cfc00",
+    "words": 569,
+    "bytes": 3960
+  },
+  "references/issue-trees.md": {
+    "sha256": "814d7b92ba20ae480a57b4b816ff1759789fec7caa9f4a189754f9a8e25b08eb",
+    "words": 618,
+    "bytes": 4023
+  },
+  "references/ladder-of-inference.md": {
+    "sha256": "50bddd1a014f670b1aa1e505c4755cc4995d56563cb8506793609d4f43d014e3",
+    "words": 653,
+    "bytes": 4340
+  },
+  "references/five-whys.md": {
+    "sha256": "5df033fe7478ebd0ea9f40ed208bfcd283e1322778d4ad801e4e0cee5c47e762",
+    "words": 722,
+    "bytes": 4629
+  },
+  "references/hard-choice-model.md": {
+    "sha256": "5e8fb1385e88013c32307ba03d9d01116ba6875dbd3ef860e6a8ce80532bdead",
+    "words": 611,
+    "bytes": 4023
+  },
+  "references/balancing-feedback-loop.md": {
+    "sha256": "96d62c0e92c714de460f61a823cab74739bd99913942ad14e01d82ce92401cf8",
+    "words": 580,
+    "bytes": 3880
+  },
+  "references/ishikawa-diagram.md": {
+    "sha256": "acdba46303e99a43774ac7504a87caa391daabe3673a986d1cb0f1ff8bb49329",
+    "words": 623,
+    "bytes": 4226
+  },
+  "references/pareto-analysis.md": {
+    "sha256": "c1442421f896ee7bdeb4411b60e60e649829abca42f407c589c04ae8a3ed2e9e",
+    "words": 733,
+    "bytes": 4820
+  },
+  "references/situation-behavior-impact.md": {
+    "sha256": "e48279ba4b778edc274cd96744e29bfe457f9c7ce9ce9e37159133bdb610b913",
+    "words": 582,
+    "bytes": 3855
+  },
+  "references/decision-matrix.md": {
+    "sha256": "388e43a130ab0dcd3e228c7e916cd664fba072cfb17cc20aeca63dd43d03b242",
+    "words": 611,
+    "bytes": 4060
+  },
+  "references/eisenhower-matrix.md": {
+    "sha256": "650ab51f2eee11923312467c0d54a59dad266620847c651179757c43a53ce520",
+    "words": 596,
+    "bytes": 3826
+  },
+  "references/concept-map.md": {
+    "sha256": "0d09a0964a91da67df1190fad3fe57bb6e4a11fe09ec4d32c778aea34bf57d02",
+    "words": 605,
+    "bytes": 4184
+  },
+  "references/confidence-speed-quality.md": {
+    "sha256": "fc1500246dae2f1a0cd7dd3884c45bb44935a476b974d9a994e68038d9dd940a",
+    "words": 601,
+    "bytes": 4206
+  },
+  "references/ooda-loop.md": {
+    "sha256": "41c0ef020e4553eea9188705e6a77d0605b2f091365d3edb36ec9f8c8ccd041d",
+    "words": 560,
+    "bytes": 3879
+  },
+  "references/impact-effort-matrix.md": {
+    "sha256": "817de46984ef4e0aa36476b7924088e6cdcf32a7ddedff54597ed00648fcb66a",
+    "words": 582,
+    "bytes": 3820
+  },
+  "references/conflict-resolution-diagram.md": {
+    "sha256": "6cdbe30ee02b2d50e397b7b1d312b8aec11681909a8daab8a7b3436ca0bcd216",
+    "words": 669,
+    "bytes": 4378
+  },
+  "references/minto-pyramid.md": {
+    "sha256": "411574751a8c8c8131cdb151ae32c59bd6c9f8852c152483ef830e89e6e0ef35",
+    "words": 642,
+    "bytes": 4372
+  },
+  "references/inversion.md": {
+    "sha256": "9703249505e842229000536807f765bdc2a2d1457c745bebf7a99dbbbe320c1d",
+    "words": 564,
+    "bytes": 3744
+  },
+  "references/catalog.md": {
+    "sha256": "4b08508e1d3def13ca0afabbdcafa535520511ee0a1904524f060b8ef60da0a6",
+    "words": 1610,
+    "bytes": 11235
+  },
+  "references/reinforcing-feedback-loop.md": {
+    "sha256": "ca08832943681040bfba7c28722f4a593f9d238680a5eda613570db3d739758f",
+    "words": 589,
+    "bytes": 4058
+  },
+  "references/productive-thinking-model.md": {
+    "sha256": "e8614a5537487d7536888a165e06a6f843f3b2f77f5627fabb8a44aa0298d375",
+    "words": 615,
+    "bytes": 4154
+  },
+  "references/cynefin-framework.md": {
+    "sha256": "e68915b4be05645fe0647f1cab471670884c9f52b9d1227c7afd66f85dc0d85b",
+    "words": 589,
+    "bytes": 4018
+  },
+  "references/iceberg-model.md": {
+    "sha256": "07c4447146d619034ed939363b629bfdd77bc28f75076c0619d16862fb1ad194",
+    "words": 610,
+    "bytes": 4141
+  },
+  "references/connection-circles.md": {
+    "sha256": "c82b960beb0f0048d3086f5ef70ac7ec9a78237691950f4f603cb9f1842126e1",
+    "words": 635,
+    "bytes": 4154
+  },
+  "references/second-order-thinking.md": {
+    "sha256": "9a8bc71ef76bbb8429ea6f1e078eaf0bf49deda641a248fae821b8448b4af7ae",
+    "words": 588,
+    "bytes": 3965
+  },
+  "references/backcasting.md": {
+    "sha256": "f7722268a905552890132ff7f6d23482f94c20c02cdcbb08eff2be1b37430091",
+    "words": 826,
+    "bytes": 5351
+  },
+  "logic/overview.md": {
+    "sha256": "ca19e14b059ce9709324fced329083a08f5a4e8635a35af75a0d758e125d48f1",
+    "words": 967,
+    "bytes": 6426
+  },
+  "logic/fallacies.md": {
+    "sha256": "1c49b496664a10ee70a727f05aceffb0f95345fcd640507cdcc26795c8a0d996",
+    "words": 964,
+    "bytes": 6356
+  },
+  "logic/formal-validity.md": {
+    "sha256": "bb7096d656648b81ae32683a29371e0fbc8ff8e057cd64b6fb44b94184b02d60",
+    "words": 896,
+    "bytes": 5337
+  },
+  "logic/induction.md": {
+    "sha256": "7ba39160ef396a4c31c179cee309ce378cfc5e76d72c0b2e9345ab85762ae437",
+    "words": 639,
+    "bytes": 4358
+  }
+}

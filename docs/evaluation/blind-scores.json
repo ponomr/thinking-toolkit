@@ -1,0 +1,110 @@
+[
+  {
+    "id": "named",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "B",
+    "rationale": "Both bound the root to comparable cohorts, distinguish measurement from real change, keep hypotheses unproven, and identify absent segment evidence. B attaches more explicit checks to the initial leaves and states the stopping condition, making investigation slightly easier to execute."
+  },
+  {
+    "id": "alias",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both identify concrete recovery and integrity failure mechanisms, propose ownership, require verified recovery before cutover, and state residual risk and review. B adds a bounded first batch and A explicitly asks to confirm acceptable loss and downtime; these are comparable strengths."
+  },
+  {
+    "id": "select-priority",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "B",
+    "rationale": "Both separate urgency from importance, act first on the outage, protect feasible strategy work, and include recurrence and capacity checks. B handles the optional meeting more cleanly: a date alone does not establish urgency, and its provisional classification is explicitly revisable. A also flags its classification as provisional, so this is a clarity preference rather than a material defect."
+  },
+  {
+    "id": "select-system",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both define changing variables, give coherent signed links and a correctly classified reinforcing loop, label mechanisms as unverified, and propose bounded tests. A measures waiting and follow-ups per ticket more directly; B explicitly measures alternative workload drivers. Neither asserts a proven mechanism or quantitative forecast."
+  },
+  {
+    "id": "boundary-review",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both reconstruct intended versus actual outcomes transparently, preserve competing quality and sales explanations, and supply provisional sustain, improvement, ownership and review actions. Suggested practices are clearly provisional rather than claimed facts. Neither mistakes low ticket counts for established quality improvement."
+  },
+  {
+    "id": "boundary-map",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both provide a focus question, concept inventory and labeled semantic propositions, distinguish ratio from subtotal and fixed-cost behavior from accounting classification, and identify company-specific gaps. Both stay within a knowledge map rather than a causal simulation."
+  },
+  {
+    "id": "logic-review",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both identify the unsupported causal inference, distinguish inductive strength from deductive validity and premise truth, expose hidden assumptions, and recommend evidence without rewriting the claim. Both satisfy review mode."
+  },
+  {
+    "id": "logic-fix",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "A",
+    "rationale": "Both reject universality from two reactions, separate liking from buying, and provide a concise uncertain rewrite plus change explanation. A stays closest to the original factual content; B adds an encouraging-start appraisal that is reasonable but unnecessary. B splitting the two inference gaps into findings does not create a material defect."
+  },
+  {
+    "id": "logic-solve",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both correctly identify affirming the consequent and supply the decisive P false, Q true countermodel, a concrete illustration, and a clear separation of validity from actual premise truth. Both describe a converse premise as an addition rather than silently assuming it."
+  },
+  {
+    "id": "combination",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Both use exactly two complementary methods with an explicit handoff into Inversion, show uncertainty rather than fabricated demand scores, and provisionally prefer the bounded pilot with safeguards and review. A more explicitly compares horizons and a baseline; B gives a clearer delay failure mechanism and trigger to reconsider. Both satisfy the requested stress test."
+  },
+  {
+    "id": "missing",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "B",
+    "rationale": "Both ask focused missing-input questions, decline to invent a winner, and explain constraint screening, weights and sensitivity. B provides a more usable visibly incomplete matrix and explicitly states that unknown values are not zeros. A is still sufficient because focused questions alone meet acceptance."
+  },
+  {
+    "id": "ordinary",
+    "A_pass": true,
+    "B_pass": true,
+    "A_defects": [],
+    "B_defects": [],
+    "preference": "tie",
+    "rationale": "Identical concise rewrites, with no Toolkit activation or narration."
+  }
+]
